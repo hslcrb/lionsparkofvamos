@@ -1,6 +1,5 @@
 import React, { type ReactNode } from 'react';
 import Link from 'next/link';
-import EnterMainLink from './components/enter-main-link';
 import LionsLogos from './LionsLogos';
 
 function EntryShell({ children }: { children: ReactNode }) {
@@ -42,10 +41,17 @@ export function EntryPage() {
             <div className="gateway-content">
                 <LionsLogos className="gateway-logos" />
                 <nav className="gateway-destinations" aria-label="입장할 곳 선택">
-                    <EnterMainLink />
-                    <Link className="gateway-button gateway-button-secondary" href="/lionspark">
+                    <Link className="gateway-button gateway-button-primary" href="/lionspark">
                         라팍월드 들어가기
                     </Link>
+                    <a
+                        className="gateway-button gateway-button-secondary"
+                        href="https://github.com/hslcrb/lionsparkofvamos"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub 프로젝트
+                    </a>
                 </nav>
             </div>
         </main>
