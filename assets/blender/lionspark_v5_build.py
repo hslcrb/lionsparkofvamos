@@ -1710,7 +1710,7 @@ def build_interior() -> None:
         ring_panel("Night_Sign_LED_Ribbon", "Brand_Ribbon_Samsung" if side in (1, 2) else "Brand_Ribbon_KS", side, 0.02, 0.98, 0.8005, 20.52, 21.52, repeat=5.0)
     # ---- lower bowl front wall ribbon boards ----
     for side in (0, 1, 6, 7):
-        ring_panel("Night_Sign_LED_Ribbon_Front", "Brand_Ribbon_KS" if side in (0,) else "Brand_Ribbon_Samsung", side, 0.04, 0.96, 0.608, 2.72, 3.72, repeat=4.0)
+        ring_panel("Night_Sign_LED_Ribbon_Front", "Brand_Ribbon_KS" if side in (0,) else "Brand_Ribbon_Samsung", side, 0.04, 0.96, 0.6125, 2.84, 3.84, repeat=4.0)
 
     # ---- skybox / VIP suites under the upper deck ----
     for side in (7, 0, 1):
