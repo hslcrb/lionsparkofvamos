@@ -1,0 +1,8 @@
+Stadium reconstructed in Blender from the supplied aerial reference; unseen details are interpretive.
+Original facade sign: supplied 대구 삼성 라이온즈 파크.svg.
+Photographic sky: Kloofendal 38d Partly Cloudy Pure Sky by Greg Zaal and Jarod Guest, Poly Haven, CC0. https://polyhaven.com/a/kloofendal_38d_partly_cloudy_puresky
+Concrete paving: Concrete Pavement 03 by Charlotte Baglioni, Poly Haven, CC0. https://polyhaven.com/a/concrete_pavement_03
+Celestial night atlas: original procedural artwork generated in Blender MCP; statistical stars, not a star catalogue. Source: assets/blender/celestial_sky_texture.py.
+Galactic pole orientation reference: Astropy Galactic frame. https://github.com/astropy/astropy/blob/main/astropy/coordinates/builtin_frames/galactic.py
+Atmospheric scattering: Three.js Sky / Preetham model, MIT. https://threejs.org/docs/pages/Sky.html
+Solar visual ephemeris: Meeus-style equations documented by NOAA. https://gml.noaa.gov/grad/solcalc/calcdetails.html

@@ -1,0 +1,12 @@
+{
+  "version": "reference-v3",
+  "blend": "lionspark-v3.blend",
+  "blendBytes": 49411321,
+  "blendSha256": "9c003f65edc2718a59160e87851096df38ec8419a9ea510a11c4e8ed1ee70ca9",
+  "glbBytes": 14261560,
+  "glbSha256": "1f506e797c6d6c3054d3fc59018149597c539b8d6d66979a46780f470fd39283",
+  "colliderCount": 75390,
+  "preservedV2": "lionspark-v2.blend",
+  "clock": "Asia/Seoul real time",
+  "glbNote": "PNG tEXt에 박힌 제작 환경 파일 경로를 제거한 뒤의 해시입니다."
+}

@@ -1,0 +1,14 @@
+Draco glTF decoder
+
+These unmodified decoder files are distributed with Three.js 0.187.0 at
+node_modules/three/examples/jsm/libs/draco/gltf/:
+
+- draco_decoder.js
+- draco_wasm_wrapper.js
+- draco_decoder.wasm
+
+Draco upstream: https://github.com/google/draco
+Three.js decoder documentation: https://github.com/mrdoob/three.js/tree/dev/examples/jsm/libs/draco
+
+Draco is licensed under the Apache License, Version 2.0.
+See LICENSE.txt for the license text.

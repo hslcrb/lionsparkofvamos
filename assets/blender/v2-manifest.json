@@ -1,0 +1,9 @@
+{
+  "version": "octagonal-v2",
+  "blend": "lionspark-v2.blend",
+  "blendBytes": 84649422,
+  "blendSha256": "14bd495e34625f0f91ec60742d728de4764e47a608a745a09218d0a2e6b82afb",
+  "glbBytes": 10385172,
+  "glbSha256": "08251d39ae85f41c296cad8c8e4c17ffd6ea5a9cd9374427398dbf8549af02a3",
+  "preservedV1": "archive/lionspark-v1.blend"
+}

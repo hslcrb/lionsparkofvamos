@@ -1,0 +1,53 @@
+{
+  "version": "reference-v3",
+  "footprintSides": 8,
+  "footprint": [
+    [
+      -62,
+      -128
+    ],
+    [
+      62,
+      -128
+    ],
+    [
+      136,
+      -54
+    ],
+    [
+      136,
+      62
+    ],
+    [
+      62,
+      136
+    ],
+    [
+      -62,
+      136
+    ],
+    [
+      -136,
+      62
+    ],
+    [
+      -136,
+      -54
+    ]
+  ],
+  "clock": "Asia/Seoul live epoch time",
+  "solidCount": 75390,
+  "vehicle": "Driveable_Car",
+  "logo": "SVG composited to single 4K image surfaces; roofline white-letter variant",
+  "features": [
+    "open portal facade",
+    "roofline original identity",
+    "night blue architectural light",
+    "stadium floodlights",
+    "crossroads with clean markings",
+    "running",
+    "driving",
+    "individual object collision"
+  ],
+  "source": "Supplied aerial and night facade references; hidden detail remains interpreted"
+}

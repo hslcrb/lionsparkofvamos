@@ -1,0 +1,64 @@
+{
+    "name": "lionsparkofvamos",
+    "version": "1.0.0",
+    "description": "대구 삼성 라이온즈 파크 3D 오픈소스 프로젝트 - Lions Park of VAMOS",
+    "private": false,
+    "scripts": {
+        "dev": "next dev --hostname 127.0.0.1",
+        "build": "next build",
+        "typecheck": "tsc --noEmit && tsc -p worker/tsconfig.json --noEmit",
+        "lint": "eslint .",
+        "format": "prettier --write src worker test next.config.ts eslint.config.mts scripts",
+        "format:check": "prettier --check src worker test next.config.ts eslint.config.mts scripts",
+        "test": "tsx --test test/*.test.ts worker/*.test.ts",
+        "local": "npm run build && wrangler dev --local --port 8787",
+        "preview": "wrangler dev --local --port 8787",
+        "deploy": "npm run build && wrangler deploy",
+        "check": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build",
+        "verify:local": "tsx scripts/verify-local.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hslcrb/lionsparkofvamos.git"
+    },
+    "keywords": [
+        "samsung-lions",
+        "daegu",
+        "baseball",
+        "digital-twin",
+        "three.js",
+        "next.js",
+        "cloudflare-workers",
+        "durable-objects",
+        "3d",
+        "blender",
+        "korea"
+    ],
+    "author": "Lions Park of VAMOS contributors",
+    "license": "MIT",
+    "type": "module",
+    "bugs": {
+        "url": "https://github.com/hslcrb/lionsparkofvamos/issues"
+    },
+    "homepage": "https://github.com/hslcrb/lionsparkofvamos#readme",
+    "dependencies": {
+        "next": "^16.4.4",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+        "three": "^0.187.0"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "^5.20261103.1",
+        "@types/node": "^26.6.6",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@types/three": "^0.187.0",
+        "eslint": "^9.39.5",
+        "eslint-config-next": "^16.4.4",
+        "jiti": "^2.7.0",
+        "prettier": "^3.9.10",
+        "tsx": "^4.23.15",
+        "typescript": "^6.0.3",
+        "wrangler": "^4.156.1"
+    }
+}

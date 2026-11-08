@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.wrangler/
+.lemonade/
+worker/.deploy-*.json
+
+.next/
+out/
+*.tsbuildinfo

@@ -1,0 +1,19 @@
+{
+  "width": 4096,
+  "height": 2048,
+  "seed": 1982,
+  "stars": 10800,
+  "projection": "equatorial equirectangular",
+  "u": "(RA+pi)/(2*pi)",
+  "v": "(declination+pi/2)/pi",
+  "poleJ2000": [
+    192.85948,
+    27.12825
+  ],
+  "encoding": "sRGB encoded from linear radiance",
+  "kind": "procedural astronomical artwork, not a star catalogue",
+  "generator": "Blender MCP / numpy",
+  "sha256": "141f0e24e7c1d509a6766d827d820d0568b886d8c10ff61fe7756d706083690b",
+  "blendBytes": 2429828,
+  "blendSha256": "63bb211fd463a938bb132e4097063596bfb5f3dbc6c23ff7963697245f7446b2"
+}
