@@ -37,7 +37,7 @@ v5 스크립트는 **어떤 .blend도 열지 않습니다.** 빈 씬에서 시�
 저장소를 클론한 사람이 곧바로 같은 결과를 만들 수 있습니다. 다음 파일이 갱신됩니다.
 
 - `public/models/lionspark.glb` (Draco, 약 12.0 MB)
-- `public/models/lionspark-collision.json` (약 0.8 MB, 9,376개 OBB)
+- `public/models/lionspark-collision.json` (약 0.8 MB, 9,432개 OBB)
 - `public/models/lionspark-scene.json`
 - `assets/blender/lionspark-v5.blend`
 - `assets/blender/v5-manifest.json`

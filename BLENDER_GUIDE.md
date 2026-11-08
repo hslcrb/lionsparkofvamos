@@ -289,7 +289,7 @@ LSV5_SKIP_RENDER=1 blender --background --python assets/blender/lionspark_v5_bui
 | 메시 오브젝트 | 601 |
 | 재질 | 85 |
 | GLB | 약 12.0 MB (Draco level 6) |
-| 충돌체 | 9,376개 |
+| 충돌체 | 9,432개 |
 | 좌석 | 36,423석 |
 | LED 패널 | 19면(메인 월·띠전광판·펜스·엠블럼) |
 
