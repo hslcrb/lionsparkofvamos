@@ -2356,10 +2356,10 @@ def build_street_signs() -> None:
         0.0,
         2.7,
         0.62,
-        [("YAGUJEONSEOL-RO 1", 0.24, FONT_DISPLAY, "Sign_White")],
+        [("42250  YAGUJEONSEOL-RO 1", 0.24, FONT_DISPLAY, "Sign_White")],
     )
     # Address plaque beside the Gate 2 portal on the facade
-    text("Sign_Facade_Address", "대구광역시 수성구 야구전설로 1", (0.0, -140.4, 9.6), 0.92, "Night_Sign_LED", font=FONT_KR, extrude=0.02, max_width=18.0)
+    text("Sign_Facade_Address", "대구광역시 수성구 야구전설로 1  (42250)", (0.0, -140.4, 9.6), 0.92, "Night_Sign_LED", font=FONT_KR, extrude=0.02, max_width=18.0)
 
     # Dalgubeol-daero road-name plate on the north sidewalk
     for x in (-120.0, 60.0):
