@@ -11,12 +11,15 @@
         "format": "prettier --write src worker test next.config.ts eslint.config.mts scripts",
         "format:check": "prettier --check src worker test next.config.ts eslint.config.mts scripts",
         "test": "tsx --test test/*.test.ts worker/*.test.ts",
-        "local": "npm run build && wrangler dev --local --port 8787",
-        "preview": "wrangler dev --local --port 8787",
+        "local": "npm run build && wrangler dev --local --port 8787 --config wrangler.realtime.jsonc",
+        "preview": "wrangler dev --local --port 8787 --config wrangler.realtime.jsonc",
         "deploy": "npm run build && wrangler deploy",
         "check": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build",
         "verify:local": "tsx scripts/verify-local.ts",
-        "serve": "node server/standalone.mjs"
+        "serve": "node server/standalone.mjs",
+        "graphics": "python3 scripts/prepare-v6-graphics.py",
+        "deploy:realtime": "npm run build && wrangler deploy --config wrangler.realtime.jsonc",
+        "deploy:dry": "npm run build && wrangler deploy --dry-run --outdir dist-worker"
     },
     "repository": {
         "type": "git",
@@ -41,7 +44,7 @@
     "bugs": {
         "url": "https://github.com/hslcrb/lionsparkofvamos/issues"
     },
-    "homepage": "https://github.com/hslcrb/lionsparkofvamos#readme",
+    "homepage": "https://vamoslionspark.rhee.life/",
     "dependencies": {
         "next": "^16.4.4",
         "react": "^19.3.1",

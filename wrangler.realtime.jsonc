@@ -1,0 +1,20 @@
+{
+  // 선택 사항 — 실시간 응원방(WebSocket + Durable Object)까지 Cloudflare에서 돌릴 때 사용합니다.
+  // Optional: the realtime cheer room on Cloudflare Workers + Durable Objects.
+  //   npm run deploy:realtime
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lionsparkofvamos",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-02",
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "none",
+    "not_found_handling": "none"
+  },
+  "durable_objects": { "bindings": [{ "name": "CHEER_ROOM", "class_name": "CheerRoom" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["CheerRoom"] }],
+  "routes": [{ "pattern": "vamoslionspark.rhee.life", "custom_domain": true }],
+  "observability": { "enabled": true }
+}

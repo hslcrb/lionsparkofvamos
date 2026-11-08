@@ -1,10 +1,16 @@
 {
+  // 순수 정적 배포 — Next.js `output: 'export'` 산출물(./out)을 Cloudflare Workers
+  // 정적 자산으로 그대로 서빙하고, vamoslionspark.rhee.life 커스텀 도메인을 붙입니다.
+  // Pure static hosting: the exported ./out tree is served as Workers static assets
+  // on the custom domain (Cloudflare's custom_domain route covers "*" paths).
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "lionsparkofvamos",
-  "main": "worker/index.ts",
+  "name": "vamoslionspark",
   "compatibility_date": "2026-11-02",
-  "assets": { "directory": "./out", "binding": "ASSETS", "run_worker_first": true, "html_handling": "none", "not_found_handling": "none" },
-  "durable_objects": { "bindings": [{ "name": "CHEER_ROOM", "class_name": "CheerRoom" }] },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["CheerRoom"] }],
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [{ "pattern": "vamoslionspark.rhee.life", "custom_domain": true }],
   "observability": { "enabled": true }
 }
