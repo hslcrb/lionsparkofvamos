@@ -1,5 +1,15 @@
 # 배포 가이드 · Deployment Guide
 
+## ▶ 공식 라이브 데모 · LIVE SHOWCASE
+
+# **<https://vamoslionspark.rhee.life/>**
+
+> 이 저장소의 v6 쇼케이스는 **Cloudflare 순수 정적 배포**입니다. `npm run build`로 나온 `out/`을
+> 그대로 올리고 커스텀 도메인만 붙이면 같은 구성이 됩니다(§3). GLB·텍스처·HTML 전부 정적 파일이라
+> 서버 코드가 필요 없습니다.
+
+---
+
 라팍 오브 바모스는 **개인 계정·도메인·인증서에 묶이지 않는** 오픈소스 패키지입니다.
 빌드 결과물은 `out/` 하나이고, 실시간 응원은 선택 사항입니다. 아래 여섯 가지 경로 중
 편한 것을 고르면 됩니다.
@@ -34,8 +44,9 @@ npm run build   # → out/ (정적 HTML·JS·GLB·텍스처)
 | --- | --- | --- |
 | `out/index.html`, `out/main.html`, `out/lionspark.html`, `out/418.html` | 수십 KB | 페이지 |
 | `out/_next/**` | 약 1 MB | JS·CSS |
-| `out/models/lionspark.glb` | 약 8.7 MB | Draco 압축 경기장·일대 |
-| `out/models/lionspark-collision.json` | 약 0.9 MB | 충돌체·출발점·야간 조명 |
+| `out/models/lionspark.glb` | 약 14.6 MB | Draco 압축 경기장·일대 (v6, WIN OR WOW 포함) |
+| `out/models/lionspark-collision.json` | 약 0.9 MB | 충돌체 10,403개·출발점·야간 조명 |
+| `out/models/lionspark-cadastre.json` | 약 1 KB | 지적 151,526.00 ㎡·펜스 실측·필드 축 |
 | `out/models/*.jpg`, `*.png` | 약 2.5 MB | 하늘·천체 |
 | `out/draco/**` | 약 0.3 MB | Draco 디코더 |
 
@@ -119,7 +130,25 @@ location / {
 
 ---
 
-## 3. Cloudflare Workers — 원래 구성(본인 계정)
+## 3. Cloudflare — 순수 정적 배포 + 커스텀 도메인 (v6 기본 구성)
+
+`wrangler.jsonc`는 **Worker 스크립트 없이 정적 자산만** 올립니다.
+
+```jsonc
+{
+  "name": "vamoslionspark",
+  "assets": { "directory": "./out", "html_handling": "auto-trailing-slash", "not_found_handling": "404-page" },
+  "routes": [{ "pattern": "vamoslionspark.rhee.life", "custom_domain": true }]
+}
+```
+
+- `routes[].custom_domain: true`는 Cloudflare가 DNS 레코드와 인증서를 자동으로 붙이는
+  커스텀 도메인 라우트입니다. 경로(`/*`)는 도메인 전체에 걸리므로 패턴에는 호스트 이름만 씁니다.
+- 배포: `npx wrangler login && npm run deploy` (빌드 → `wrangler deploy`).
+- 실시간 응원까지 Cloudflare에서 돌리려면 `npm run deploy:realtime`
+  (`wrangler.realtime.jsonc`, Durable Object `CheerRoom`).
+
+## 3-B. Cloudflare Workers — 실시간 응원 포함 구성
 
 ```sh
 npx wrangler login
@@ -250,7 +279,7 @@ sudo nginx -t && sudo systemctl reload nginx
 
 - **HTTPS**에서는 WebSocket이 자동으로 `wss://`로 붙습니다(`location.protocol` 기준).
   프록시에서 `Upgrade`·`Connection` 헤더를 반드시 통과시켜 주세요.
-- **모델 캐시**: `lionspark.glb`는 8.7 MB입니다. 대부분의 호스트가 gzip/brotli를 자동
+- **모델 캐시**: `lionspark.glb`는 14.6 MB입니다. 대부분의 호스트가 gzip/brotli를 자동
   적용하지만, GLB는 이미 압축(Draco)되어 있어 전송량 감소 폭은 작습니다. 장기 캐시
   (`Cache-Control: public, max-age=31536000, immutable`)를 권장합니다.
 - **메모리**: Node 서버는 상주 메모리 40 MB 안팎입니다. Durable Object/Node 모두 응원 수
