@@ -2409,6 +2409,14 @@ def scrub_glb(path: Path) -> None:
 
 # ---- save the editable scene ----
 SCENE.render.engine = "BLENDER_EEVEE_NEXT"
+# leave the file opening on a useful overview camera
+if "LSV4_Aerial_Camera" not in bpy.data.objects:
+    SCENE.camera = setup_camera("LSV4_Aerial_Camera", (330.0, -440.0, 265.0), (0.0, -60.0, 8.0), 40.0)
+else:
+    SCENE.camera = bpy.data.objects["LSV4_Aerial_Camera"]
+setup_daylight()
+SCENE.render.resolution_x, SCENE.render.resolution_y = 1600, 1000
+SCENE.frame_start, SCENE.frame_end = 1, 1
 SCENE["version"] = "district-v4"
 SCENE["units"] = "meters"
 for other in list(bpy.data.scenes):
