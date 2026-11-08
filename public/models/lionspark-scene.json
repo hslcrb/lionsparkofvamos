@@ -1,5 +1,5 @@
 {
-  "version": "district-v5",
+  "version": "district-v6",
   "footprintSides": 8,
   "footprint": [
     [
@@ -35,24 +35,48 @@
       -54
     ]
   ],
+  "parcelAreaM2": 151526.0,
+  "fieldAxis": {
+    "bearingDeg": 67.5,
+    "label": "ENE",
+    "note": "home plate -> centre field"
+  },
+  "fence": {
+    "left": 99.5,
+    "leftCentre": 123.4,
+    "centre": 122.5,
+    "rightCentre": 123.4,
+    "right": 99.5,
+    "height": 3.6
+  },
+  "standToBase": 18.3,
+  "elevation": {
+    "platformEL": 45.0,
+    "avenueEL": 35.0,
+    "grandStairRise": 10.0
+  },
   "clock": "Asia/Seoul live epoch time",
-  "solidCount": 9432,
+  "solidCount": 10403,
+  "parkingBays": 852,
   "vehicle": "Driveable_Car",
   "district": [
-    "octagonal stadium with two-tier bowl",
-    "outfield scoreboard 36 x 20.4 m with a 32 x 18 m LED wall",
+    "octagonal stadium with two-tier bowl, field axis east-north-east",
+    "WIN OR WOW main scoreboard 36 x 20.4 m behind right field",
+    "WIN OR WOW and 혼연일체 outfield fence murals with sponsor hoardings",
+    "Bleo family mascots (블레오, 핑크레오, 레니, 라온)",
+    "151,526.00 m2 cadastral parcel with boundary stones and survey board",
     "two concourse rings with concessions, VIP suites and a press box",
-    "dressed home and away dugouts, outfield bullpens",
-    "Dalgubeol-daero 10 lanes with median planting",
+    "dressed home and away dugouts, outfield bullpens, 18.3 m field boxes",
+    "Dalgubeol-daero 10 lanes in the EL 35 lowland with the grand staircase",
     "Daegongwon station exits 4 and 5",
-    "gate 2 plaza, ticket box, team store, golden lion",
+    "전설로 광장, ticket box, team store, golden lion",
     "Ya-gujeonseol-ro 1 address plates and overhead destination gantries",
-    "Yeonho reservoir, Alpha City towers, Daegu Stadium and Art Museum silhouettes",
-    "P1 and P2 parking",
-    "outfield berm, sand playground, Yeonhosan forest hill"
+    "Yeonho reservoir NW, Alpha City towers W, court complex N",
+    "Daegu Stadium and Art Museum beyond the Yeonhosan ridge S/SE",
+    "P1, P2 and P3 parking"
   ],
   "features": [
-    "owner Samsung Lions victory artwork on LED wall, ribbon boards and banners",
+    "WIN OR WOW artwork on LED wall, ribbon boards, fence and forecourt",
     "procedural PBR materials with packed textures",
     "mowing stripes and infield clay",
     "cantilever roof with trusses and skylights",
@@ -61,5 +85,5 @@
     "walkable concourses, stairs and vomitory wayfinding",
     "walking, driving, oriented per-object collision"
   ],
-  "source": "Procedural v5 build script; interpretative reconstruction of the supplied references"
+  "source": "Procedural v6 build script; interpretative reconstruction of the supplied references"
 }

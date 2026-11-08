@@ -1,7 +1,10 @@
 Stadium and district reconstructed procedurally in Blender 4.2 from the supplied aerial, plan and night facade references; unseen details are interpretive.
-Build pipeline: assets/blender/lionspark_v5_build.py (standalone, no external add-ons).
+Build pipeline: assets/blender/lionspark_v6_build.py (standalone, no external add-ons).
+Compass: +Y is true north; the field axis (home plate -> centre field) is placed at 67.5 deg (ENE), following 매일신문 / KBS coverage of 라팍.
+Survey figures: parcel 151,526.00 m2, fence 99.5 / 123.4 / 122.5 m at 3.6 m, lower stand 18.3 m from the bases.
+Brand media: WIN OR WOW / 혼연일체 lettering, the sponsor hoardings (DGB대구은행·POSCO·삼성생명·삼성화재·Galaxy·에버랜드·참소주·금복주), the Bleo family (블레오·핑크레오·레니·라온) and the cadastral board are drawn from scratch by scripts/prepare-v6-graphics.py with Pillow and the bundled OFL fonts. No club or company logo file is copied; lettering only.
 Original facade sign artwork: supplied 대구 삼성 라이온즈 파크.svg.
-2026 Korean Series victory artwork: supplied by the project owner (assets/graphics/), composited into LED wall, ribbon board and banner textures by scripts/prepare-v5-graphics.py.
+2025-26 Samsung Lions victory artwork: supplied by the project owner (assets/graphics/), composited by scripts/prepare-v5-graphics.py.
 Photographic sky: Kloofendal 38d Partly Cloudy Pure Sky by Greg Zaal and Jarod Guest, Poly Haven, CC0. https://polyhaven.com/a/kloofendal_38d_partly_cloudy_puresky
 Concrete paving: Concrete Pavement 03 by Charlotte Baglioni, Poly Haven, CC0. https://polyhaven.com/a/concrete_pavement_03
 Procedural grass, clay, asphalt, paving and roof textures: generated in Blender with numpy by the build script.

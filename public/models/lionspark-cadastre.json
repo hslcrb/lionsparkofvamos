@@ -1,0 +1,59 @@
+{
+  "version": "cadastre-v6",
+  "address": "대구광역시 수성구 야구전설로 1",
+  "postalCode": "42250",
+  "parcelAreaM2": 151526.0,
+  "parcelPolygon": [
+    [
+      233.839,
+      -133.575
+    ],
+    [
+      108.575,
+      -258.839
+    ],
+    [
+      -68.575,
+      -258.839
+    ],
+    [
+      -193.839,
+      -133.575
+    ],
+    [
+      -193.839,
+      43.575
+    ],
+    [
+      -68.575,
+      168.839
+    ],
+    [
+      108.575,
+      168.839
+    ],
+    [
+      233.839,
+      43.575
+    ]
+  ],
+  "coordinates": "web frame: x east, y up, z south (z = -blender y)",
+  "fence": {
+    "left": 99.5,
+    "leftCentre": 123.4,
+    "centre": 122.5,
+    "rightCentre": 123.4,
+    "right": 99.5,
+    "height": 3.6
+  },
+  "fieldAxisDeg": 67.5,
+  "fieldAxisLabel": "동북동 (ENE)",
+  "standToBase": 18.3,
+  "elevation": {
+    "parcelPlatformEL": 45.0,
+    "dalgubeolDaeroEL": 35.0,
+    "stairRise": 10.0
+  },
+  "shade": "3루 홈 응원석 전 좌석 16시 이후 그늘",
+  "source": "Official figures cited in the project brief: 대지면적 151,526.00 m², 외야 99.5/123.4/122.5 m, 펜스 3.6 m, 하부 스탠드 18.3 m"
+}
