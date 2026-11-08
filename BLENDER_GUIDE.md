@@ -248,10 +248,10 @@ LSV4_SKIP_RENDER=1 blender --background --python assets/blender/lionspark_v4_bui
 | 항목 | v4 값 |
 | --- | --- |
 | 삼각형 | 약 127만 |
-| 메시 오브젝트 | 298 |
+| 메시 오브젝트 | 302 |
 | 재질 | 59 |
 | GLB | 약 8.7 MB (Draco level 6) |
-| 충돌체 | 10,221개 |
+| 충돌체 | 10,429개 |
 | 좌석 | 36,423석 |
 
 좌석은 팬/백 두 개의 상자로 단순화해 하나의 메시로 묶었습니다(드로콜 1회). 관중석

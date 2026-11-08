@@ -1,15 +1,15 @@
 {
   "version": "district-v4",
   "blend": "lionspark-v4.blend",
-  "blendBytes": 18111425,
-  "blendSha256": "68ff52a4f45d4fbc5d55ce976575941db5bf821fe24a7b16c620454a83d979a8",
-  "glbBytes": 8719752,
-  "glbSha256": "f16a2b16b9fa8f4ab6b3bd1cf8d3cec29670c8898775b95cc6861f6efa726352",
-  "collisionBytes": 866345,
-  "colliderCount": 10221,
+  "blendBytes": 18205565,
+  "blendSha256": "4de039159a949f1a1a45b7d8a5b2b79b71e2caed4eea2d68e8bd47f4adddf2d2",
+  "glbBytes": 8749856,
+  "glbSha256": "16b5b6426e75ed6b77804b376ff060e5598d96fb4c7c6cb1d3f2d721bd024625",
+  "collisionBytes": 884175,
+  "colliderCount": 10429,
   "nightLightCount": 22,
   "seatCount": 36423,
-  "objects": 298,
+  "objects": 302,
   "blender": "4.2.1 LTS",
   "clock": "Asia/Seoul real time"
 }

@@ -268,9 +268,9 @@ material("WalkSurface_Berm", "#4d8536", 0.94, texture="grass", uv=8.0)
 material("Facade_Panel", "#e8e9e6", 0.52, 0.12, texture="metal", uv=6.0)
 material("Facade_Charcoal", "#41494b", 0.66, 0.25, texture="concrete", uv=5.0)
 material("Facade_White_Band", "#f4f5f4", 0.42, 0.1)
-material("Roof_Membrane", "#eef0f1", 0.55, texture="roof", uv=7.0)
-material("Roof_Soffit", "#dfe6ea", 0.6)
-material("Roof_Fascia", "#f6f7f7", 0.4, 0.15)
+material("Roof_Membrane", "#e4edf5", 0.5, texture="roof", uv=7.0)
+material("Roof_Soffit", "#a9c1d8", 0.62)
+material("Roof_Fascia", "#eef4fa", 0.4, 0.15)
 material("Steel_White", "#f0f2f2", 0.35, 0.55)
 material("Steel_Galvanized", "#b9bfc3", 0.42, 0.75)
 material("Steel_Dark", "#2c3236", 0.5, 0.6)
@@ -1674,6 +1674,17 @@ def station_exit(x: float, y: float, number: int) -> None:
     # glass balustrade
     for dx in (-3.7, 3.7):
         box("Station_Balustrade", (x + dx, y + 0.6, 1.6), (0.12, 5.4, 1.1), "Glass_Clear")
+    # escalator handrails and landing rail at the stair mouth
+    for dx in (-2.4, 2.4):
+        beam("Station_Escalator_Rail", (x + dx, y + 2.6, 1.05), (x + dx, y + 0.1, 0.55), 0.05, "Steel_Galvanized", 6)
+        for k in range(5):
+            box(
+                "Station_Escalator_Step",
+                (x + dx * 0.55, y + 2.4 - k * 0.5, 0.9 - k * 0.09),
+                (2.0, 0.46, 0.06),
+                "Steel_Galvanized",
+            )
+    text("Sign_Escalator", "에스컬레이터  ESCALATOR", (x, y + 2.5, 1.35), 0.22, "Sign_White", font=FONT_KR, extrude=0.01)
     # station name pylon
     px, py = x + 8.6, y + 1.0
     beam("Station_Pylon_Post", (px, py, 0.2), (px, py, 6.2), 0.12, "Steel_Dark", 8)

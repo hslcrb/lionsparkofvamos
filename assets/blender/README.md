@@ -32,7 +32,7 @@ v4 스크립트는 **어떤 .blend도 열지 않습니다.** 빈 씬에서 시�
 저장소를 클론한 사람이 곧바로 같은 결과를 만들 수 있습니다. 다음 파일이 갱신됩니다.
 
 - `public/models/lionspark.glb` (Draco, 약 8.7 MB)
-- `public/models/lionspark-collision.json` (약 0.9 MB, 10,221개 OBB)
+- `public/models/lionspark-collision.json` (약 0.9 MB, 10,429개 OBB)
 - `public/models/lionspark-scene.json`
 - `assets/blender/lionspark-v4.blend`
 - `assets/blender/v4-manifest.json`
