@@ -1,372 +1,272 @@
-# 🦁 라팍 오브 바모스 · Lions Park of VAMOS
+<p align="center">
+  <br />
+  <h1 align="center">🦁 라팍 오브 바모스 · Lions Park of VAMOS</h1>
+  <p align="center">
+    <strong>대구 삼성 라이온즈 파크와 그 일대를 브라우저 안으로 옮긴 3D 디지털 트윈</strong><br />
+    <strong>그리고 그 옆에서 함께 목청을 높이는 실시간 웹 응원관</strong>
+  </p>
+  <p align="center">
+    <a href="https://vamoslionspark.rhee.life/"><img src="https://img.shields.io/badge/Live_Showcase-vamoslionspark.rhee.life-0066B2?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Live Demo" /></a>
+  </p>
+  <p align="center">
+    <img src="https://img.shields.io/badge/license-MIT-0066B2" alt="License: MIT" />
+    <img src="https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white" alt="Next.js 16" />
+    <img src="https://img.shields.io/badge/Three.js-r187-black?logo=threedotjs&logoColor=white" alt="Three.js r187" />
+    <img src="https://img.shields.io/badge/Blender-4.2-E87D0D?logo=blender&logoColor=white" alt="Blender 4.2" />
+    <img src="https://img.shields.io/badge/KBO-삼성_라이온즈-0066B2" alt="KBO Samsung Lions" />
+    <img src="https://img.shields.io/badge/Self--Hosted-Docker_%7C_Node_%7C_Vercel_%7C_CF-2ea44f" alt="Self-Hosted" />
+  </p>
+  <br />
+</p>
 
-> **대구 삼성 라이온즈 파크와 그 일대를 브라우저 안으로 옮긴 3D 디지털 트윈,**
-> **그리고 그 옆에서 함께 목청을 높이는 실시간 응원관.**
+<p align="center">
+  <img src="assets/blender/references/aerial-day.png" alt="Lions Park of VAMOS v6 Aerial View" width="100%" />
+</p>
 
-## ▶ 라이브 데모 · LIVE SHOWCASE
-
-# **<https://vamoslionspark.rhee.life/>**
-
-> **WIN OR WOW — 라팍 v6.** 위 주소가 이 저장소의 **공식 라이브 쇼케이스**입니다.
-> Cloudflare 순수 정적 배포(`out/` 그대로) 위에서 GLB 14.6 MB와 Three.js가 바로 돕니다.
-
----
-
-![License: MIT](https://img.shields.io/badge/license-MIT-0066B2)
-![Next.js](https://img.shields.io/badge/Next.js-16-000000)
-![Three.js](https://img.shields.io/badge/Three.js-r187-000000)
-![Blender](https://img.shields.io/badge/Blender-4.2-E87D0D)
-![Self-hosted](https://img.shields.io/badge/self--hosted-Docker%20%7C%20Node%20%7C%20Vercel%20%7C%20Pages-2ea44f)
-
-Lions Park of VAMOS는 삼성 라이온즈 팬들이 만든 **비공식 오픈소스 프로젝트**입니다.
-Blender로 절차적으로 다시 지은 라팍(대구 삼성 라이온즈 파크)과 대공원역·달구벌대로 일대를
-Three.js로 걸어 다니고 차로 달릴 수 있으며, 같은 사이트의 응원관에서는 접속한 팬들과 응원 수와
-춤 동작을 실시간으로 나눌 수 있습니다.
-
-**개인 계정·도메인·인증서에 묶여 있지 않습니다.** 클론한 뒤 `docker compose up` 한 번, 또는
-`npm run build`로 나온 `out/`을 아무 정적 호스트에 올리면 바로 내 사이트가 됩니다.
-Blender 파일도 함께 들어 있어, 모델을 열어 고치고 다시 내보낼 수 있습니다.
-
-- 🏟️ **라팍월드** — `/lionspark` · 14.6 MB Draco GLB, 10,403개 충돌체, 모델 좌석 39,845석, WASD 보행과 차량 주행
-- 🏆 **WIN OR WOW** — 2026 공식 캐치프레이즈를 36 m × 20.4 m 메인 LED 월(실전 스코어보드 레이아웃)·외야 펜스 뮤럴·띠전광판·광장 게이트에 매핑. 선수단 슬로건 **혼연일체**도 함께
-- 📐 **지적도 151,526.00 ㎡** — 실측 대지면적·동북동(67.5°) 필드 축·펜스 99.5/123.4/122.5 m·3.6 m·1·3루 베이스 18.3 m 필드석을 좌표와 JSON으로 고증 (`docs/gis/`)
-- 🎨 **삼성 라이온즈 전광판** — 36 m × 20.4 m 메인 LED 월, 1·3루 2층 난간 띠전광판, 외야 펜스와 팀스토어에 2026 한국시리즈 승리 그래픽을 발광 텍스처로 매핑
-- 🚶 **경기장 안쪽** — 걷는 1·2층 콘코스와 계단, 땅땅치킨·로사안젤라·라팍 편의점, 구역 안내판(블루존·익사이팅존 등), VIP 스위트·프레스 박스, 덕아웃 장비와 외야 불펜
-- 🛣️ **실제 주소와 주변 지리** — 야구전설로 1 도로명판·달구벌대로 안내표지, 연호지 수면, 수성알파시티 타워, 대구스타디움·대구미술관 원경 실루엣
-- 🏙️ **초극실사 확장** — 대공원역 4·5번 출구, 달구벌대로 10차선, P1·P2 주차장, 광장, 연호산 수림
-- 💙 **응원관** — `/main` · WebSocket 응원 수·춤 동작 실시간 공유, 유리 엠블럼 시네마
-- 🌅 **천체 대기 시뮬레이션** — 대구 위경도 기준 실제 태양 위치로 낮·밤이 흐르고, 🌅 일출(태양 5°)·☀️ 낮·🌇 노을(태양 8°)·🌙 밤 네 장면을 버튼 한 번에 전환합니다
-- 🐳 **어디서나 자체 호스팅** — Docker, Node, VPS·Nginx, Vercel, Cloudflare, GitHub Pages
+> **WIN OR WOW — 라팍 v6.** <https://vamoslionspark.rhee.life/> 주소가 이 저장소의 **공식 라이브 쇼케이스**입니다.
+> Cloudflare 순수 정적 자산 배포(`out/` 그대로) 위에서 14.6 MB Draco GLB와 Three.js가 즉시 구동됩니다.
 
 ---
 
-## 목차
+## 📌 프로젝트 소개 · Overview
 
-1. [무엇을 만들었나](#무엇을-만들었나)
-2. [30초 만에 내 사이트로](#30초-만에-내-사이트로)
-3. [화면 여행](#화면-여행)
-4. [조작법](#조작법)
-5. [아키텍처](#아키텍처)
-6. [로컬에서 실행하기](#로컬에서-실행하기)
-7. [검증과 테스트](#검증과-테스트)
-8. [배포](#배포)
-9. [블렌더 파이프라인](#블렌더-파이프라인)
-10. [저장소 구조](#저장소-구조)
-11. [자산·라이선스·크레딧](#자산라이선스크레딧)
-12. [기여하기](#기여하기)
-13. [알려 둘 것](#알려-둘-것)
+**Lions Park of VAMOS**는 삼성 라이온즈 팬들이 만든 **비공식 한국형 3D 오픈소스 프로젝트**입니다.
+
+Blender 4.2로 절차적으로 다시 지은 대한민국 유일의 팔각 다이아몬드 구장 **라팍(대구 삼성 라이온즈 파크)** 과 151,526 ㎡ 실측 대지, 달구벌대로 10차선, 대공원역 4·5번 출구 일대를 Three.js로 걸어 다니고 차량으로 주행할 수 있습니다. 또한 같은 사이트의 실시간 응원관에서는 접속한 팬들과 함께 응원 카운트와 응원 동작을 실시간으로 나눌 수 있습니다.
+
+### 🌟 핵심 특징 (Key Highlights)
+
+- 🏟️ **라팍월드 (`/lionspark`)** — 14.6 MB Draco GLB, 10,403개 OBB 충돌체, 모델 좌석 39,845석, WASD 보행 및 3인칭 차량 주행
+- 🏆 **WIN OR WOW & 혼연일체** — 2026 공식 캐치프레이즈를 36 m × 20.4 m 초대형 메인 LED 월(실전 7회말 스코어보드 레이아웃)·외야 펜스 뮤럴·게이트에 완벽 매핑
+- 📐 **지적도 151,526.00 ㎡ & 동북동(67.5°) 필드 축** — 대지면적 151,526 ㎡ 정팔각형 대지 경계석·16시 이후 3루 홈 블루존 그늘 고증·펜스 99.5/123.4/122.5 m·국내 최단 18.3 m 필드석 (`docs/gis/`)
+- 🏢 **라팍 공식 스폰서 8종 & 블레오 패밀리** — DGB대구은행(iM뱅크)·POSCO·삼성생명·삼성화재·Galaxy·에버랜드·참소주·금복주 호딩과 블레오·핑크레오·레니·라온 마스코트
+- 🚶 **경기장 안쪽 콘코스 회랑** — 걷는 1·2층 회랑과 계단, 땅땅치킨·로사안젤라·라팍 편의점, 블루존/익사이팅존 구역 표지판, 21개 VIP 스위트 통유리, 덕아웃 벤치와 배트 거치대
+- 🛣️ **주변 지리와 10m 표고차** — 야구전설로 1 도로명판, 달구벌대로 EL 35m에서 광장 EL 45m로 오르는 10m 대계단(44단), 연호지 수면, 수성알파시티 타워 9동, 연호산 능선(+74m), 대구스타디움 원경
+- 🅿️ **지상 P1~P3 주차장 852면** — 실제 라팍 지상 주차면수(852면)와 100% 일치하는 지상 주차 구획과 주차 차량
+- 💙 **실시간 응원관 (`/main`)** — WebSocket 기반 응원 카운트 및 춤 동작(폴짝폴짝/손흔들기/응원) 실시간 동기화, 유리 엠블럼 시네마 화면
+- 🌅 **대구 위경도 천체 대기 산란** — 대구(35.84°N, 128.68°E) 기준 태양 궤적 계산, 🌅 일출(태양 5°)·☀️ 낮·🌇 노을(태양 8°)·🌙 밤 원클릭 시간대 전환
+- 🐳 **자체 호스팅 100% 보장** — Docker, Node 독립 서버, VPS, Nginx, Vercel, Cloudflare, GitHub Pages 어디서나 1분 만에 배포
 
 ---
 
-## 무엇을 만들었나
+## 📸 3D 월드 갤러리 · Preview Gallery
 
-|                 | 내용                                                                                                                                                                                                                                              |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **경기장**      | 대한민국 유일의 팔각 다이아몬드 구장. 2단 내야석과 낮은 외야석(모델 기준 39,845석), 캔틸레버 지붕과 백색 트러스, 커다란 사다리꼴 개구부가 있는 외벽, 3루 블루존과 1루 원정석, 덕아웃, 백스톱, 페어폴. 필드 축은 실제 라팍과 같은 **동북동 67.5°** |
-| **그라운드**    | 모잉 스트라이프 잔디, 내야 흙, 마운드·베이스·파울라인, 외야 펜스와 홈런 라인, 외야 잔디석과 모래놀이터                                                                                                                                            |
-| **전광판**      | 외야 우측 36 m × 20.4 m LED 스크린 — **WIN OR WOW** 타이포와 이닝 스코어·BSO·타자/투수 레이아웃, 철골 프레임과 후면 브랜드 월                                                                                                                     |
-| **일대**        | 달구벌대로 10차선(중앙분리대 화단·가로수·가로등·횡단보도·교통섬), 야구전설로, 대공원역 4·5번 출구(유리 캐노피·계단·역명 표지), P1·P2 주차장, 야구전설로 광장(대계단·매표소·팀스토어·황금 사자상·키오스크), 연호산 녹지 구릉                       |
-| **충돌과 지형** | Blender 메시의 개별 연결 성분에서 뽑아낸 10,403개 OBB와 삼각형 바닥 인덱스. 공간 해시로 조회하며 고속 이동도 작은 단계로 나눠 얇은 벽을 통과하지 않음                                                                                             |
-| **보행·차량**   | 걷기 7 m/s, 달리기 12 m/s, 차량 탑승·가속·조향·제동, 모바일 패드, 전체 전경, 출발점 복귀                                                                                                                                                          |
-| **하늘**        | 대구(35.84°N, 128.68°E)의 날짜·시각으로 태양 고도와 방위를 계산해 Rayleigh·Mie 대기 산란과 태양광을 실시간 갱신. 은하 극 방향을 맞춘 야간 천체 아틀라스                                                                                           |
-| **응원관**      | 유리 엠블럼이 떠 있는 시네마 화면, 응원 버튼, 춤 동작 3종, 접속자 수, Web Audio 기반 10% 이득의 응원가                                                                                                                                            |
-| **자체 호스팅** | 정적 export + 의존성 없는 Node 서버(Docker 포함). Cloudflare 없이도 실시간 응원이 동작                                                                                                                                                            |
+|             🏟️ 주간 전경 & 수성알파시티 원경             |                   🏆 WIN OR WOW 36m 실전 전광판                    |
+| :------------------------------------------------------: | :----------------------------------------------------------------: |
+| ![주간 조감도](assets/blender/references/aerial-day.png) | ![전광판 클로즈업](assets/blender/references/scoreboard-close.png) |
+|         **🌇 노을지는 야구전설로 광장 & 게이트**         |                 **🌙 야간 라이팅 & 조명탑 풀가동**                 |
+| ![노을 광장](assets/blender/references/plaza-sunset.png) |     ![야간 조감도](assets/blender/references/aerial-night.png)     |
+|           **🚶 달구벌대로 10m 대계단 진입로**            |                **🏪 1·2층 콘코스 회랑 & 편의시설**                 |
+|  ![10m 대계단](assets/blender/references/stair-day.png)  |  ![콘코스 내부](assets/blender/references/interior-concourse.png)  |
 
-### 모델 제작 방식
+---
 
-`assets/blender/lionspark_v6_build.py` **하나로** 경기장·광장·도로·역·주차장·수림과 콘코스 내부까지 모두
-절차적으로 짓습니다. 외부 애드온이나 Blender MCP 세션 없이 `blender --background --python`으로
-재현되며, 재질은 전부 Principled BSDF + 패킹된 이미지 텍스처라 GLB 하나에 결과물이 담깁니다.
-자세한 사용법은 [BLENDER_GUIDE.md](BLENDER_GUIDE.md)에 있습니다.
+## 🧭 목차 · Table of Contents
 
-## 30초 만에 내 사이트로
+1. [실측 고증 및 지리 데이터](#-실측-고증-및-지리-데이터)
+2. [30초 만에 내 사이트로](#-30초-만에-내-사이트로)
+3. [화면 구성 및 콘텐츠](#-화면-구성-및-콘텐츠)
+4. [조작법 (Controls)](#-조작법-controls)
+5. [시스템 아키텍처](#-시스템-아키텍처)
+6. [로컬 개발 환경](#-로컬-개발-환경)
+7. [호스트별 배포 가이드](#-호스트별-배포-가이드)
+8. [블렌더 절차적 생성 파이프라인](#-블렌더-절차적-생성-파이프라인)
+9. [저장소 디렉터리 구조](#-저장소-디렉터리-구조)
+10. [라이선스 및 크레딧](#-라이선스-및-크레딧)
+
+---
+
+## 📐 실측 고증 및 지리 데이터
+
+라팍 v6는 실제 대구삼성라이온즈파크의 토목·건축 허가 데이터와 구장 공식 요강을 정밀 대조하여 절차적으로 재현했습니다.
+
+| 구분            | 공식 스펙 및 고증 수치                   | 3D 모델링 반영 내용                                                      |
+| --------------- | ---------------------------------------- | ------------------------------------------------------------------------ |
+| **대지 면적**   | 151,526.00 ㎡                            | 정팔각형 대지 경계석(34m 간격) & 코너 측량핀, 지적도 안내판(`docs/gis/`) |
+| **필드 방위축** | **동북동 67.5° (ENE)**                   | 홈플레이트→센터 방향. 오후 4시 이후 3루 홈 응원석 전석 그늘 형성 고증    |
+| **펜스 규격**   | 좌우 99.5m / 좌우중 123.4m / 중앙 122.5m | 팔각 펜스 라인 및 3.6m 펜스 높이, 홈런 경계선 완벽 일치                  |
+| **필드석 거리** | **18.3 m**                               | 1·3루 베이스에서 파울라인 평행 18.3m 국내 최단거리 익사이팅존 3열 시공   |
+| **표고차 (EL)** | 플랫폼 EL 45m / 달구벌대로 EL 35m        | 10m 높이 단차를 연결하는 대계단 44단 (3단계 참 구획)                     |
+| **주차 면수**   | 지상 852면 (총 1,097대 중 지상)          | P1·P2·P3 지상 주차 구획 852면 정확 절차 배치                             |
+| **전광판**      | 36 m × 20.4 m (우익수 뒤편 동남동)       | 3루 홈 관람석에서 직시하도록 배치, WIN OR WOW 실전 스코어보드 텍스처     |
+
+---
+
+## 🚀 30초 만에 내 사이트로
+
+**개인 계정이나 특정 클라우드에 묶여 있지 않습니다.** 클론 후 즉시 독립 서버로 띄울 수 있습니다:
+
+### Docker로 실행 (가장 빠름)
 
 ```sh
 git clone https://github.com/hslcrb/lionsparkofvamos.git
 cd lionsparkofvamos
 docker compose up --build
-# → http://localhost:8080
+# → http://localhost:8080 접속
 ```
 
-Docker가 없다면:
+### Node.js로 실행 (Node 22+)
 
 ```sh
-npm ci && npm run build      # Node.js 22 이상
-node server/standalone.mjs   # 정적 서버 + WebSocket 응원방, 기본 8080
-```
-
-정적 호스트(Vercel·Cloudflare Pages·GitHub Pages·S3)에 올릴 때는 `out/` 디렉터리만 있으면
-됩니다. 다만 그 경우 실시간 응원(접속자 수·누적 응원)은 동작하지 않고, 응원 버튼과 춤은 내
-화면에서만 반응합니다. 호스트별 자세한 절차는 **[DEPLOYMENT.md](DEPLOYMENT.md)** 를 보세요.
-
-| 하고 싶은 것                | 명령                                                            |
-| --------------------------- | --------------------------------------------------------------- |
-| 도커로 한 번에              | `docker compose up --build`                                     |
-| 노드 서버로                 | `npm run build && npm run serve`                                |
-| Cloudflare Workers(내 계정) | `npx wrangler login && npm run deploy`                          |
-| Vercel                      | `npx vercel --prod`                                             |
-| GitHub Pages 하위 경로      | `NEXT_PUBLIC_BASE_PATH=/저장소이름 npm run build` + `.nojekyll` |
-
-## 화면 여행
-
-### `/` — 입구
-
-두 개의 목적지만 있는 조용한 입구입니다. **메인으로 바로 접속**은 응원관으로, **라팍월드
-들어가기**는 3D 경기장으로 이어집니다. 배경은 메시 그라데이션과 유리 질감만으로 만든
-Lions blue 톤이며, 네온 장식은 쓰지 않습니다. 입구에서 응원관에 들어가면 ‘나의 라이온즈’가
-출력 신호의 10%까지 3초 동안 페이드 인 합니다. 시스템 음량은 건드리지 않습니다.
-
-### `/main` — 응원관
-
-- 응원 버튼을 누르면 응원 수가 모두에게 0.25초 간격으로 반영됩니다.
-- **폴짝폴짝 / 손 흔들기 / 신나게 응원** 동작은 0.5초 간격으로 방에 공유됩니다.
-- 지금 보고 있는 사람 수가 함께 표시됩니다.
-- 둥근 음악 패널에서 응원가를 켜고 끌 수 있습니다.
-- 모션 최소화 설정을 켠 사용자에게는 상시 움직임을 멈춥니다.
-
-### `/lionspark` — 라팍월드
-
-정적 자산만으로 도는 3D 세계입니다. 모델·충돌·텍스처·하늘은 모두 `public/models`의
-정적 파일이고, 화면 계산은 브라우저에서 끝납니다. 기본 시각은 `Asia/Seoul` 기준 현재
-시각이며, 낮·밤·해돋이·노을 미리보기를 고르면 그날의 지평선 근처 태양 고도부터 장면이
-계속 흐릅니다. 실시간 버튼을 누르면 한국의 현재 시각으로 돌아옵니다.
-
-광장 중앙에서 출발해 **게이트 2**의 중앙 통로로 그라운드에 들어갈 수 있고, 달구벌대로에
-세워 둔 차에 타면 야구전설로와 주차장을 달릴 수 있습니다.
-
-### `/418` — 나는 주전자다
-
-숨은 오류 코드 페이지입니다. Worker/Node 서버가 진짜 HTTP 418을 돌려줍니다. 없는 주소는
-실제 404와 함께 404 페이지가 나갑니다.
-
-## 조작법
-
-| 동작               | 키보드                      | 모바일           |
-| ------------------ | --------------------------- | ---------------- |
-| 이동               | `W` `A` `S` `D` 또는 방향키 | 화면 패드        |
-| 달리기             | `Shift` (12 m/s)            | 달리기 버튼      |
-| 차량 탑승 / 하차   | 가까운 차 앞에서 `E`        | 운전 / 하차 버튼 |
-| 가속·후진          | `W` / `S`                   | 패드 위·아래     |
-| 조향               | `A` / `D`                   | 패드 좌·우       |
-| 제동               | `Space`                     | 브레이크 버튼    |
-| 전체 전경 · 출발점 | 화면 버튼                   | 화면 버튼        |
-
-내릴 때는 주변에 통과 가능한 자리가 있는지 먼저 검사합니다. 운전 중에는 모바일 패드가
-가속·조향을 겸합니다.
-
-## 아키텍처
-
-```
-[브라우저]
-   │  정적 HTML·JS·GLB·텍스처   (호스트의 CDN·정적 서버)
-   ▼
-[정적 자산]  ── out/ : 페이지, 3D 모델, 충돌 데이터, 하늘 텍스처
-   │  /api/room  (WebSocket, 선택)
-   ▼
-[응원방]  ── ① Cloudflare Durable Object ② 내장 Node 서버 ③ 없음(정적 호스트)
-```
-
-- **Next.js 16 App Router + TypeScript(strict)**, `output: 'export'`로 `out/`에 정적
-  HTML을 만듭니다. SSR·서버 액션·이미지 최적화 서버를 쓰지 않습니다.
-- **정적 자산 서버**는 세 가지 중 하나입니다.
-    1. **Cloudflare Worker** — `ASSETS` 바인딩으로 정적 자산을 서빙하고 `/api/room`을
-       `CheerRoom` Durable Object로 넘깁니다. `/`, `/main`, `/lionspark`, `/418`에 각각의
-       HTML을, 나머지 HTML 요청에는 실제 404를 돌려줍니다.
-    2. **내장 Node 서버**(`server/standalone.mjs`) — 의존성 없이 같은 라우팅·상태 코드·
-       WebSocket 프로토콜을 구현합니다. Docker 이미지가 이 서버를 씁니다.
-    3. **정적 호스트** — 실시간 응원 없이 페이지만 서빙합니다.
-- **응원 상태** — 방 하나(`cinema`)에 응원 수 한 줄과 접속 소켓만 있습니다. 클라이언트
-  메시지는 256바이트 이하, 알려진 타입만 통과시킵니다. 계정·쿠키·개인정보·채팅 로그를
-  저장하지 않습니다.
-- **하위 경로 배포** — `NEXT_PUBLIC_BASE_PATH` 하나로 `basePath`와 모델·음원·Draco 경로가
-  함께 이동합니다(`src/asset-path.ts`).
-
-## 로컬에서 실행하기
-
-**요구 사항** — Node.js 22 이상, npm. (Docker를 쓸 경우 Docker만 있으면 됩니다.)
-
-```sh
-git clone https://github.com/hslcrb/lionsparkofvamos.git
-cd lionsparkofvamos
 npm ci
-npm run local
-```
-
-`http://127.0.0.1:8787`에서 **배포와 같은 구성**(정적 페이지 + Worker + WebSocket)을 그대로
-확인할 수 있습니다. 종료는 `Ctrl+C`. 로컬 응원 수는 `.wrangler/` 아래에 저장됩니다.
-
-Cloudflare 없이 도는 구성도 있습니다.
-
-```sh
 npm run build
-npm run serve      # http://127.0.0.1:8080, 내장 Node 서버
+node server/standalone.mjs
+# → http://localhost:8080 (정적 에셋 서빙 + 실시간 WebSocket 응원방)
 ```
 
-화면을 빠르게 고칠 때는 위 서버를 켜 둔 채 다른 터미널에서:
-
-```sh
-npm run dev        # http://127.0.0.1:3000, /api/* 는 로컬 Worker(8787)로 프록시
-```
-
-### 주요 스크립트
-
-| 명령                                    | 설명                                                              |
-| --------------------------------------- | ----------------------------------------------------------------- |
-| `npm run dev`                           | Next 개발 서버 (3000)                                             |
-| `npm run build`                         | 정적 export → `out/`                                              |
-| `npm run serve`                         | 내장 Node 서버로 `out/` 서빙 (8080)                               |
-| `npm run local`                         | 빌드 후 `wrangler dev --local` (8787)                             |
-| `npm run preview`                       | 빌드 없이 로컬 Worker만 실행                                      |
-| `npm run typecheck`                     | 앱·Worker 타입 검사                                               |
-| `npm run lint` · `npm run format:check` | ESLint · Prettier 검사                                            |
-| `npm test`                              | 단위 테스트 (`tsx --test`)                                        |
-| `npm run check`                         | 타입·린트·포맷·테스트·빌드 전체                                   |
-| `npm run verify:local`                  | 실제 로컬 서버로 페이지·상태 코드·음원·WebSocket 2클라이언트 검증 |
-| `npm run deploy`                        | 빌드 후 `wrangler deploy`                                         |
-
-## 검증과 테스트
-
-```sh
-npm run typecheck
-npm run lint
-npm run format:check
-npm test
-npm run build
-```
-
-전체는 `npm run check` 한 번입니다. `npm run preview`를 켜 둔 상태에서 `npm run verify:local`을
-실행하면 내보낸 페이지, 404·418 상태 코드, 음원 응답, Next 탐색 데이터, 그리고 두 개의
-WebSocket 클라이언트가 응원·춤을 실제로 공유하는지까지 확인합니다.
-
-GitHub Actions 워크플로는 `.github/check.yml.txt`로 보관되어 있습니다. GitHub App 권한으로는
-워크플로 파일을 만들 수 없어 `workflows/` 밖에 두었습니다. Actions를 쓰려면
-`.github/workflows/check.yml`로 옮겨 커밋하고(워크플로 권한이 있는 계정으로) Actions를
-활성화하면 됩니다. 같은 이유로 GitHub Pages 배포 워크플로 예시는
-[DEPLOYMENT.md](DEPLOYMENT.md)에만 두었습니다.
-
-## 배포
-
-| 호스트                          | 3D  | 실시간 응원    | 문서                                                               |
-| ------------------------------- | --- | -------------- | ------------------------------------------------------------------ |
-| Docker / docker compose         | ✅  | ✅             | [DEPLOYMENT.md §1](DEPLOYMENT.md#1-docker--가장-빠른-자체-호스팅)  |
-| Node 서버 · VPS · NAS · Railway | ✅  | ✅             | [§2](DEPLOYMENT.md#2-nodejs-서버--vps--nas)                        |
-| Cloudflare Workers(내 계정)     | ✅  | ✅             | [§3](DEPLOYMENT.md#3-cloudflare-workers--원래-구성본인-계정)       |
-| Vercel                          | ✅  | ⚠️ 로컬 응원만 | [§4](DEPLOYMENT.md#4-vercel)                                       |
-| Cloudflare Pages · Netlify · S3 | ✅  | ⚠️ 로컬 응원만 | [§5](DEPLOYMENT.md#5-cloudflare-pages--netlify--s3-등-정적-호스트) |
-| GitHub Pages                    | ✅  | ⚠️ 로컬 응원만 | [§6](DEPLOYMENT.md#6-github-pages)                                 |
-| 정적 Nginx                      | ✅  | ⚠️ 로컬 응원만 | [§7](DEPLOYMENT.md#7-정적-nginx)                                   |
-
-Cloudflare를 쓴다면 무료 계정으로 충분합니다.
-
-```sh
-npx wrangler login
-npm run deploy          # wrangler.jsonc — 순수 정적 + vamoslionspark.rhee.life
-npm run deploy:realtime  # 선택: 실시간 응원방까지 (wrangler.realtime.jsonc)
-```
-
-- `wrangler.jsonc`의 Worker 이름은 `lionsparkofvamos`, Durable Object 클래스는 `CheerRoom`,
-  SQLite 마이그레이션 태그는 `v1`입니다.
-- 이미 응원 데이터가 있는 방에 붙일 때는 **클래스 이름·인스턴스 이름·마이그레이션을 바꾸지
-  마세요.** 바꾸면 기존 응원 수가 새 방으로 이어지지 않습니다.
-- 계정 ID·도메인·인증서는 저장소에 없습니다. 원하는 호스트에 원하는 도메인으로 붙이면 됩니다.
-
-## 블렌더 파이프라인
-
-```sh
-python3 scripts/prepare-v6-graphics.py   # WIN OR WOW · 혼연일체 · 스폰서 · 마스코트 · 지적도 텍스처
-blender --background --python assets/blender/lionspark_v6_build.py
-```
-
-- `assets/blender/lionspark_v6_build.py` — 좌표계(+Y=진북)와 **동북동 67.5° 필드 축** 위에서 경기장·
-  전설로 광장·대계단·달구벌대로·대공원역·주차장·수림·콘코스를 절차적으로 생성하고 Draco GLB,
-  충돌체 JSON, 씬 JSON, **지적 JSON**, `.blend`, 11장의 미리보기 렌더를 한 번에 내보냅니다.
-- `assets/blender/lionspark-v6.blend` — 텍스처가 패킹된 편집용 씬(약 25 MB).
-- `scripts/prepare-v6-graphics.py` — **WIN OR WOW**, **혼연일체**, 스폰서 광고판(DGB대구은행·POSCO·
-  삼성생명·삼성화재·Galaxy·에버랜드·참소주·금복주), 블레오 패밀리, 지적도판을 Pillow로 직접 그려
-  `assets/blender/textures/brand-*.jpg`로 만듭니다.
-- 좌표계는 미터·Blender Z-up이며, 웹은 `(x, z, −y)`로 받습니다.
-- 오브젝트 이름 규칙(`WalkSurface*`, `Seat_*`, `Night_*`, `Driveable_Car`)이 런타임 동작과
-  연결되어 있습니다. 열람·수정·Unity/Unreal/Three.js 내보내기 방법은
-  **[BLENDER_GUIDE.md](BLENDER_GUIDE.md)** 에 정리했습니다.
-
-## 저장소 구조
-
-```
-src/
-  app/                     라우트: /, /main, /lionspark, /418, 404, error
-  components/              응원 카드, 동작 패널, 유리 엠블럼, 음악 공급자·제어 UI
-  features/lionspark/      런타임(모델·충돌·차량), 물리, 지형 인덱스, 천체·대기, HUD
-  hooks/                   방 연결·재연결, 응원 버스트 타이머
-  asset-path.ts            하위 경로 배포용 자산 경로
-  cinema/scene.ts          Three.js 장면 생성·동작·자원 해제
-  room.ts                  클라이언트·서버 공용 메시지 타입과 검증
-worker/
-  index.ts                 자산 서빙·라우트·상태 코드·/api/room
-  cheer-room.ts            CheerRoom SQLite Durable Object
-server/
-  standalone.mjs           의존성 없는 Node 정적 서버 + WebSocket 응원방
-deploy/nginx.conf          정적 Nginx 설정 예시
-test/                      물리·천체·지형·음악·프로토콜·자산 경로 단위 테스트
-scripts/verify-local.ts    실제 로컬 서버 통합 검증
-public/
-  models/                  lionspark.glb, 충돌 JSON, 하늘 텍스처, 크레딧
-  draco/                   Draco 디코더
-assets/blender/            v6 빌드 스크립트·씬, 폰트, 참고 사진, 텍스처(WIN OR WOW·스폰서·마스코트), 매니페스트
-assets/graphics/           제공받은 삼성 라이온즈 승리 그래픽 원본과 합성 기록
-docs/                      디자인·응원 문구·로드맵
-source-materials/          제공받은 SVG·디자인 원본
-Dockerfile                 멀티스테이지 빌드 + Node 런타임
-docker-compose.yml         1분 자체 호스팅
-DEPLOYMENT.md              호스트별 배포 매뉴얼
-BLENDER_GUIDE.md           블렌더 열람·수정·내보내기 가이드
-```
-
-경기장 모델은 저장소 용량 때문에 **v6·v5·v4·v3 블렌드만** 포함합니다(최신 v6, 직전 v5, 역사 기록 v4·v3).
-v1·v2 블렌드는 제외되어 있지만 빌드 스크립트는 모두 남겨 두어 재구성 과정을 따라갈 수 있습니다. 순서와
-주의 사항은 [`assets/blender/README.md`](assets/blender/README.md)에 정리했습니다.
-
-## 자산·라이선스·크레딧
-
-- **코드·모델·스크립트**: [MIT](LICENSE) · Copyright (c) 2026 Lions Park of VAMOS contributors
-- **삼성 라이온즈·VAMOS 로고, 구단 응원가 음원, 경기장 사인 원본**: 원 권리자에게 있으며
-  MIT 적용 대상이 아닙니다. 이 저장소는 **비공식 팬 프로젝트**로만 사용합니다.
-  자세한 범위는 [NOTICE.md](NOTICE.md)와 [public/models/credits.txt](public/models/credits.txt).
-- **폰트** — Noto Sans KR(Adobe, SIL OFL 1.1), Barlow Condensed(Jeremy Tribby, SIL OFL 1.1).
-  라이선스 전문은 `assets/blender/fonts/OFL-*.txt`.
-- **하늘 사진** — Kloofendal 38d Partly Cloudy Pure Sky, Greg Zaal & Jarod Guest, Poly Haven, CC0
-- **콘크리트 텍스처** — Concrete Pavement 03, Charlotte Baglioni, Poly Haven, CC0
-- **대기 산란** — three.js `Sky` (Preetham 모델), MIT
-- **태양 위치·일출·일몰** — NOAA / Meeus 근사식
-- **은하 좌표 참고** — Astropy Galactic frame
-- **야간 천체 아틀라스** — `assets/blender/celestial_sky_texture.py`로 만든 절차적 아트워크
-  (통계적 별 배치이며 실제 성표가 아닙니다)
-- **Draco** — Apache License 2.0
-
-## 기여하기
-
-팬의 손으로 더 나아집니다. 오타, 문서, 접근성, 물리, 셰이더, 성능 무엇이든 환영합니다.
-
-1. 이슈에서 무엇을 바꿀지 먼저 이야기해 주세요(큰 변경은 특히).
-2. `main`에서 브랜치를 따고(`feat/…`, `fix/…`, `docs/…`) 작업합니다.
-3. 올리기 전에 `npm run check`를 통과시킵니다. 모델을 고쳤다면
-   `blender --background --python assets/blender/lionspark_v6_build.py`로 자산을 다시 만들고
-   `assets/blender/v6-manifest.json`도 함께 커밋합니다.
-4. PR에는 **무엇을, 왜, 어떻게 확인했는지**를 적습니다. 스크린샷이 있으면 더 좋습니다.
-
-자세한 규칙은 [CONTRIBUTING.md](CONTRIBUTING.md)에 있습니다.
-
-## 알려 둘 것
-
-- 이 프로젝트는 **삼성 라이온즈 구단과 무관한 비공식 팬 프로젝트**입니다. 구단의 승인·후원을
-  받지 않았습니다.
-- 경기장과 일대는 제공된 항공 사진·평면도·야간 외벽 사진과 공개된 규모를 토대로 한
-  **해석적 재구성**입니다. 실측 도면 기반의 측량적 디지털 트윈이 아니며, 치수·동선·주변
-  배치는 실제와 다를 수 있습니다.
-- 응원가 음원과 구단 로고는 팬 프로젝트 시연 목적의 사용입니다. 권리자의 요청이 있으면
-  해당 자산을 제거합니다.
-- 이 저장소에는 개인정보·대화 기록·비밀 키, 특정 개인의 클라우드 계정 설정이 들어 있지
-  않습니다. 기여할 때도 넣지 마세요.
+정적 호스팅(Vercel, Cloudflare Pages, GitHub Pages, S3, Nginx)에는 `npm run build`로 생성된 `out/` 폴더만 업로드하면 즉시 작동합니다. 자세한 내용은 **[DEPLOYMENT.md](DEPLOYMENT.md)** 를 참고하세요.
 
 ---
 
-**GO LIONS!** 💙🤍 — 라팍에서, 그리고 브라우저에서.
+## 🎮 화면 구성 및 콘텐츠
+
+### 1. `/` — 라이온즈 블루 입구
+
+메시 그라데이션과 유리 질감으로 빚어낸 미니멀한 입구 화면입니다.
+
+- **메인으로 바로 접속**: 실시간 웹 응원관으로 이동
+- **라팍월드 들어가기**: 3D 디지털 트윈 경기장으로 입장
+
+### 2. `/main` — 실시간 웹 응원관
+
+접속한 팬들과 함께 목청을 높이는 인터랙티브 응원 공간입니다.
+
+- 0.25초 간격으로 전체 누적 응원 횟수 실시간 반영
+- 3대 응원 모션(**폴짝폴짝 / 손 흔들기 / 신나게 응원**)을 0.5초 주기로 방 전체 동기화
+- 은은한 유리 엠블럼과 3초 페이드인 '나의 라이온즈' 응원 음원 플레이어 제공
+
+### 3. `/lionspark` — 3D 라팍월드
+
+브라우저에서 100% 로컬 계산되는 오픈월드 경기장입니다.
+
+- 광장 게이트 2 중앙 통로를 통해 그라운드로 입장
+- 달구벌대로에 주차된 차량에 탑승하여 10차선 대로와 주차장 드라이빙 가능
+- 🌅 일출, ☀️ 주간, 🌇 노을, 🌙 야간 4대 조명 프리셋 원클릭 전환
+
+---
+
+## 🕹️ 조작법 (Controls)
+
+| 동작                 | 키보드 조작                 | 모바일 터치           |
+| -------------------- | --------------------------- | --------------------- |
+| **이동**             | `W` `A` `S` `D` 또는 방향키 | 가상 조이스틱 패드    |
+| **전력 질주**        | `Shift` 키 (12 m/s)         | 달리기 토글 버튼      |
+| **차량 탑승 / 하차** | 차량 근처에서 `E` 키        | 차량 탑승/하차 아이콘 |
+| **차량 가속 · 후진** | `W` / `S`                   | 가상 패드 상 / 하     |
+| **차량 조향**        | `A` / `D`                   | 가상 패드 좌 / 우     |
+| **핸드 브레이크**    | `Space` 바                  | 제동 버튼             |
+| **카메라 뷰 전환**   | 3인칭 뷰 / 광장 복귀 버튼   | 화면 상단 HUD 버튼    |
+
+---
+
+## 🏗️ 시스템 아키텍처
+
+```
+[클라이언트 브라우저]
+   │  정적 HTML · JS · GLB (14.6MB) · 텍스처
+   ▼
+[정적 자산 계층] ── out/ (Next.js 16 Static Export)
+   │  /api/room (WebSocket 프로토콜, 선택)
+   ▼
+[응원 동기화 계층] ── ① Cloudflare Durable Object (CheerRoom)
+                     ② 내장 Node.js 경량 서버 (standalone.mjs)
+                     ③ 정적 전용 모드 (로컬 화면 반응)
+```
+
+- **Next.js 16 App Router + TypeScript (Strict)**: `output: 'export'` 정적 빌드 채택. 서버 사이드 렌더링 비용 0원 실현.
+- **Three.js (r187) + Draco Mesh Compression**: 7만 개 이상의 지오메트리를 14.6MB 단일 GLB로 압축해 2초 내 첫 렌더 완료.
+- **OBB 충돌 물리 엔진**: 공간 분할 해시를 적용한 10,403개 회전 바운딩 박스로 벽 뚫림 현상 완전 방지.
+
+---
+
+## 💻 로컬 개발 환경
+
+```sh
+# 저장소 클론 및 패키지 설치
+git clone https://github.com/hslcrb/lionsparkofvamos.git
+cd lionsparkofvamos
+npm ci
+
+# Cloudflare Workers 로컬 에뮬레이션 (포트 8787)
+npm run local
+
+# 내장 Node.js 서버 테스트 (포트 8080)
+npm run build && npm run serve
+
+# 전체 검증 스크립트 실행 (타입체크 + 린트 + 테스트 59건 + 빌드)
+npm run check
+```
+
+---
+
+## 🌐 호스트별 배포 가이드
+
+| 호스팅 플랫폼               | 3D 경기장 | 실시간 응원 동기화 | 상세 배포 가이드                                                                 |
+| --------------------------- | :-------: | :----------------: | -------------------------------------------------------------------------------- |
+| **Docker / Compose**        |    ✅     |         ✅         | [DEPLOYMENT.md §1](DEPLOYMENT.md#1-docker--가장-빠른-자체-호스팅)                |
+| **Node.js / VPS / NAS**     |    ✅     |         ✅         | [DEPLOYMENT.md §2](DEPLOYMENT.md#2-nodejs-서버--vps--nas)                        |
+| **Cloudflare Workers**      |    ✅     |         ✅         | [DEPLOYMENT.md §3](DEPLOYMENT.md#3-cloudflare-workers--원래-구성본인-계정)       |
+| **Cloudflare Pages / 정적** |    ✅     |   ⚠️ (로컬 반응)   | [DEPLOYMENT.md §5](DEPLOYMENT.md#5-cloudflare-pages--netlify--s3-등-정적-호스트) |
+| **Vercel**                  |    ✅     |   ⚠️ (로컬 반응)   | [DEPLOYMENT.md §4](DEPLOYMENT.md#4-vercel)                                       |
+| **GitHub Pages**            |    ✅     |   ⚠️ (로컬 반응)   | [DEPLOYMENT.md §6](DEPLOYMENT.md#6-github-pages)                                 |
+| **Nginx 정적 웹서버**       |    ✅     |   ⚠️ (로컬 반응)   | [DEPLOYMENT.md §7](DEPLOYMENT.md#7-정적-nginx)                                   |
+
+---
+
+## 🎨 블렌더 절차적 생성 파이프라인
+
+외부 에셋 다운로드 없이, 파이썬 스크립트 단 2개로 모든 텍스처와 3D 모델을 처음부터 절차적으로 빌드합니다:
+
+```sh
+# 1. WIN OR WOW, 혼연일체, 스폰서 호딩, 마스코트 텍스처 자동 생성
+python3 scripts/prepare-v6-graphics.py
+
+# 2. Blender 헤드리스 모드로 3D 라팍 v6 빌드 및 GLB 익스포트
+blender --background --python assets/blender/lionspark_v6_build.py
+```
+
+자세한 블렌더 노드 구조 및 Unity/Unreal 호환 내보내기 방법은 **[BLENDER_GUIDE.md](BLENDER_GUIDE.md)** 에 상세히 기술되어 있습니다.
+
+---
+
+## 📁 저장소 디렉터리 구조
+
+```
+lionsparkofvamos/
+├── assets/
+│   ├── blender/          # v6 빌드 스크립트, .blend 씬, 텍스처, 폰트, 프리뷰 렌더
+│   └── graphics/         # 삼성 라이온즈 승리 그래픽 원본 자산
+├── deploy/               # Nginx 정적 설정 템플릿
+├── docs/                 # 지적도 고증 문서 (docs/gis/), 디자인 매뉴얼
+├── public/
+│   ├── draco/            # Three.js Draco 지오메트리 디코더
+│   └── models/           # 14.6MB Draco GLB, OBB 충돌체 JSON, 지적 JSON
+├── scripts/              # 텍스처 생성기 및 로컬 통합 검증 스크립트
+├── server/               # 의존성 0개 독립 Node.js 정적+WebSocket 서버
+├── src/
+│   ├── app/              # Next.js 16 라우트 (/, /main, /lionspark, /418)
+│   ├── components/       # 응원 UI, 음악 플레이어, HUD 컴포넌트
+│   └── features/         # 3D 물리 엔진, 지형 인덱스, 천체 시뮬레이션
+├── worker/               # Cloudflare Workers 및 CheerRoom Durable Object
+├── Dockerfile            # 멀티스테이지 초경량 프로덕션 이미지
+├── docker-compose.yml    # 1초 원클릭 로컬 컨테이너 기동
+├── DEPLOYMENT.md         # 7대 호스팅 플랫폼별 배포 매뉴얼
+└── BLENDER_GUIDE.md      # 3D 모델 수정 및 게임 엔진 연동 가이드
+```
+
+---
+
+## 📜 라이선스 및 크레딧
+
+- **소스 코드 및 3D 기하 모델**: [MIT License](LICENSE) · Copyright (c) 2026 Lions Park of VAMOS contributors.
+- **삼성 라이온즈 구단 상표·마스코트·응원가 음원**: 원 저작권자에게 귀속되며, 본 프로젝트는 비영리 비공식 팬 프로젝트 목적으로만 활용됩니다. (상세: [NOTICE.md](NOTICE.md))
+- **폰트**: Noto Sans KR (SIL OFL 1.1), Barlow Condensed (SIL OFL 1.1).
+- **HDRI 하늘 및 텍스처**: Poly Haven (CC0).
+- **Draco 3D 압축**: Apache License 2.0.
+
+---
+
+<p align="center">
+  <strong>승리를 위해 다 함께 외쳐라! 최강 삼성 라이온즈! 🦁💙🤍</strong><br />
+  <em>라팍 현장에서, 그리고 웹 브라우저 안에서. VAMOS!</em>
+</p>
