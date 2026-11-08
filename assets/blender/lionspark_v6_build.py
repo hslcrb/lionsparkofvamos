@@ -3206,7 +3206,7 @@ SKY_PRESETS = {
     "sunrise": dict(elevation=5.0, azimuth=100.0, energy=3.9, color=(1.0, 0.64, 0.38), sky=0.3, exposure=0.15),
     "day": dict(elevation=56.0, azimuth=190.0, energy=4.0, color=(1.0, 0.96, 0.90), sky=0.55, exposure=-0.15),
     "sunset": dict(elevation=8.0, azimuth=262.0, energy=3.1, color=(1.0, 0.47, 0.24), sky=0.24, exposure=0.2),
-    "night": dict(elevation=-12.0, azimuth=280.0, energy=0.08, color=(0.55, 0.68, 1.0), sky=0.05, exposure=0.8),
+    "night": dict(elevation=-12.0, azimuth=280.0, energy=0.32, color=(0.55, 0.68, 1.0), sky=0.10, exposure=1.7),
 }
 
 
@@ -3358,14 +3358,26 @@ def setup_night() -> list:
     # floodlight banks on the four towers
     for cx, cy in ((-168.0, -96.0), (168.0, -96.0), (-168.0, 96.0), (168.0, 96.0)):
         data = bpy.data.lights.new(f"Night_Flood_{int(cx)}_{int(cy)}", "SPOT")
-        data.energy = 420000.0
-        data.spot_size = math.radians(64.0)
+        data.energy = 4200000.0
+        data.spot_size = math.radians(74.0)
         data.spot_blend = 0.45
         data.color = (0.92, 0.95, 1.0)
         obj = bpy.data.objects.new(f"Night_Flood_{int(cx)}_{int(cy)}", data)
         COL.objects.link(obj)
         obj.location = site_world((cx * 0.94, cy * 0.94, 46.0))
         obj.rotation_euler = (Vector((0.0, 0.0, 2.0)) - Vector(obj.location)).to_track_quat("-Z", "Y").to_euler()
+        created.append(obj)
+    # broad fill over the playing surface, as the four corner banks overlap in reality
+    for x, y, size in ((-60.0, -40.0, 90.0), (60.0, 40.0, 90.0)):
+        data = bpy.data.lights.new(f"Night_Field_Fill_{int(x)}", "AREA")
+        data.energy = 260000.0
+        data.shape = "DISK"
+        data.size = size
+        data.color = (0.92, 0.96, 1.0)
+        obj = bpy.data.objects.new(f"Night_Field_Fill_{int(x)}", data)
+        COL.objects.link(obj)
+        obj.location = (x, y, 46.0)
+        obj.rotation_euler = (Vector((x * 0.2, y * 0.2, 0.0)) - Vector(obj.location)).to_track_quat("-Z", "Y").to_euler()
         created.append(obj)
     return created
 
