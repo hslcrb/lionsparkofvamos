@@ -18,10 +18,13 @@ Three.js로 걸어 다니고 차로 달릴 수 있으며, 같은 사이트의 �
 `npm run build`로 나온 `out/`을 아무 정적 호스트에 올리면 바로 내 사이트가 됩니다.
 Blender 파일도 함께 들어 있어, 모델을 열어 고치고 다시 내보낼 수 있습니다.
 
-- 🏟️ **라팍월드** — `/lionspark` · 8.7 MB Draco GLB, 10,429개 충돌체, 36,423석, WASD 보행과 차량 주행
+- 🏟️ **라팍월드** — `/lionspark` · 12.0 MB Draco GLB, 9,376개 충돌체, 36,423석, WASD 보행과 차량 주행
+- 🎨 **삼성 라이온즈 전광판** — 36 m × 20.4 m 메인 LED 월, 1·3루 2층 난간 띠전광판, 외야 펜스와 팀스토어에 2026 한국시리즈 승리 그래픽을 발광 텍스처로 매핑
+- 🚶 **경기장 안쪽** — 걷는 1·2층 콘코스와 계단, 땅땅치킨·로사안젤라·라팍 편의점, 구역 안내판(블루존·익사이팅존 등), VIP 스위트·프레스 박스, 덕아웃 장비와 외야 불펜
+- 🛣️ **실제 주소와 주변 지리** — 야구전설로 1 도로명판·달구벌대로 안내표지, 연호지 수면, 수성알파시티 타워, 대구스타디움·대구미술관 원경 실루엣
 - 🏙️ **초극실사 확장** — 대공원역 4·5번 출구, 달구벌대로 10차선, P1·P2 주차장, 광장, 연호산 수림
 - 💙 **응원관** — `/main` · WebSocket 응원 수·춤 동작 실시간 공유, 유리 엠블럼 시네마
-- 🌅 **천체 대기 시뮬레이션** — 대구 위경도 기준 실제 태양 위치로 낮·밤·해돋이·노을이 흐릅니다
+- 🌅 **천체 대기 시뮬레이션** — 대구 위경도 기준 실제 태양 위치로 낮·밤이 흐르고, 🌅 일출(태양 5°)·☀️ 낮·🌇 노을(태양 8°)·🌙 밤 네 장면을 버튼 한 번에 전환합니다
 - 🐳 **어디서나 자체 호스팅** — Docker, Node, VPS·Nginx, Vercel, Cloudflare, GitHub Pages
 
 ---
@@ -52,7 +55,7 @@ Blender 파일도 함께 들어 있어, 모델을 열어 고치고 다시 내보
 | **그라운드** | 모잉 스트라이프 잔디, 내야 흙, 마운드·베이스·파울라인, 외야 펜스와 홈런 라인, 외야 잔디석과 모래놀이터 |
 | **전광판** | 외야 우측 36 m × 20.4 m LED 스크린과 철골 프레임, 후면 브랜드 월 |
 | **일대** | 달구벌대로 10차선(중앙분리대 화단·가로수·가로등·횡단보도·교통섬), 야구전설로, 대공원역 4·5번 출구(유리 캐노피·계단·역명 표지), P1·P2 주차장, 야구전설로 광장(대계단·매표소·팀스토어·황금 사자상·키오스크), 연호산 녹지 구릉 |
-| **충돌과 지형** | Blender 메시의 개별 연결 성분에서 뽑아낸 10,429개 OBB와 삼각형 바닥 인덱스. 공간 해시로 조회하며 고속 이동도 작은 단계로 나눠 얇은 벽을 통과하지 않음 |
+| **충돌과 지형** | Blender 메시의 개별 연결 성분에서 뽑아낸 9,376개 OBB와 삼각형 바닥 인덱스. 공간 해시로 조회하며 고속 이동도 작은 단계로 나눠 얇은 벽을 통과하지 않음 |
 | **보행·차량** | 걷기 7 m/s, 달리기 12 m/s, 차량 탑승·가속·조향·제동, 모바일 패드, 전체 전경, 출발점 복귀 |
 | **하늘** | 대구(35.84°N, 128.68°E)의 날짜·시각으로 태양 고도와 방위를 계산해 Rayleigh·Mie 대기 산란과 태양광을 실시간 갱신. 은하 극 방향을 맞춘 야간 천체 아틀라스 |
 | **응원관** | 유리 엠블럼이 떠 있는 시네마 화면, 응원 버튼, 춤 동작 3종, 접속자 수, Web Audio 기반 10% 이득의 응원가 |
@@ -60,7 +63,7 @@ Blender 파일도 함께 들어 있어, 모델을 열어 고치고 다시 내보
 
 ### 모델 제작 방식
 
-`assets/blender/lionspark_v4_build.py` **하나로** 경기장·광장·도로·역·주차장·수림을 모두
+`assets/blender/lionspark_v5_build.py` **하나로** 경기장·광장·도로·역·주차장·수림과 콘코스 내부까지 모두
 절차적으로 짓습니다. 외부 애드온이나 Blender MCP 세션 없이 `blender --background --python`으로
 재현되며, 재질은 전부 Principled BSDF + 패킹된 이미지 텍스처라 GLB 하나에 결과물이 담깁니다.
 자세한 사용법은 [BLENDER_GUIDE.md](BLENDER_GUIDE.md)에 있습니다.
@@ -254,12 +257,14 @@ npm run deploy
 ## 블렌더 파이프라인
 
 ```sh
-blender --background --python assets/blender/lionspark_v4_build.py
+blender --background --python assets/blender/lionspark_v5_build.py
 ```
 
-- `assets/blender/lionspark_v4_build.py` — 경기장·광장·도로·역·주차장·수림을 절차적으로
-  생성하고 Draco GLB, 충돌체 JSON, 씬 JSON, `.blend`, 미리보기 렌더를 한 번에 내보냅니다.
-- `assets/blender/lionspark-v4.blend` — 텍스처가 패킹된 편집용 씬(약 18 MB).
+- `assets/blender/lionspark_v5_build.py` — 경기장·광장·도로·역·주차장·수림·콘코스를 절차적으로
+  생성하고 Draco GLB, 충돌체 JSON, 씬 JSON, `.blend`, 네 가지 하늘 미리보기 렌더를 한 번에 내보냅니다.
+- `assets/blender/lionspark-v5.blend` — 텍스처가 패킹된 편집용 씬(약 22 MB).
+- `scripts/prepare-v5-graphics.py` — 제공받은 삼성 라이온즈 승리 그래픽을 LED 월·띠전광판·배너
+  텍스처로 합성합니다(`assets/graphics/` → `assets/blender/textures/brand-*.jpg`).
 - 좌표계는 미터·Blender Z-up이며, 웹은 `(x, z, −y)`로 받습니다.
 - 오브젝트 이름 규칙(`WalkSurface*`, `Seat_*`, `Night_*`, `Driveable_Car`)이 런타임 동작과
   연결되어 있습니다. 열람·수정·Unity/Unreal/Three.js 내보내기 방법은
@@ -287,7 +292,8 @@ scripts/verify-local.ts    실제 로컬 서버 통합 검증
 public/
   models/                  lionspark.glb, 충돌 JSON, 하늘 텍스처, 크레딧
   draco/                   Draco 디코더
-assets/blender/            v4 빌드 스크립트·씬, 폰트, 참고 사진, 텍스처, 매니페스트
+assets/blender/            v5 빌드 스크립트·씬, 폰트, 참고 사진, 텍스처, 매니페스트
+assets/graphics/           제공받은 삼성 라이온즈 승리 그래픽 원본과 합성 기록
 docs/                      디자인·응원 문구·로드맵
 source-materials/          제공받은 SVG·디자인 원본
 Dockerfile                 멀티스테이지 빌드 + Node 런타임
@@ -296,8 +302,8 @@ DEPLOYMENT.md              호스트별 배포 매뉴얼
 BLENDER_GUIDE.md           블렌더 열람·수정·내보내기 가이드
 ```
 
-경기장 모델은 저장소 용량 때문에 **최신 v4와 직전 v3 블렌드만** 포함합니다. v1·v2 블렌드는
-제외되어 있지만 빌드 스크립트는 모두 남겨 두어 재구성 과정을 따라갈 수 있습니다. 순서와
+경기장 모델은 저장소 용량 때문에 **v5·v4·v3 블렌드만** 포함합니다(최신 v5, 직전 v4, 역사 기록 v3).
+v1·v2 블렌드는 제외되어 있지만 빌드 스크립트는 모두 남겨 두어 재구성 과정을 따라갈 수 있습니다. 순서와
 주의 사항은 [`assets/blender/README.md`](assets/blender/README.md)에 정리했습니다.
 
 ## 자산·라이선스·크레딧
@@ -324,8 +330,8 @@ BLENDER_GUIDE.md           블렌더 열람·수정·내보내기 가이드
 1. 이슈에서 무엇을 바꿀지 먼저 이야기해 주세요(큰 변경은 특히).
 2. `main`에서 브랜치를 따고(`feat/…`, `fix/…`, `docs/…`) 작업합니다.
 3. 올리기 전에 `npm run check`를 통과시킵니다. 모델을 고쳤다면
-   `blender --background --python assets/blender/lionspark_v4_build.py`로 자산을 다시 만들고
-   `assets/blender/v4-manifest.json`도 함께 커밋합니다.
+   `blender --background --python assets/blender/lionspark_v5_build.py`로 자산을 다시 만들고
+   `assets/blender/v5-manifest.json`도 함께 커밋합니다.
 4. PR에는 **무엇을, 왜, 어떻게 확인했는지**를 적습니다. 스크린샷이 있으면 더 좋습니다.
 
 자세한 규칙은 [CONTRIBUTING.md](CONTRIBUTING.md)에 있습니다.

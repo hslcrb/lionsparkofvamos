@@ -1,9 +1,12 @@
 import * as THREE from 'three';
 import type { NightLightAnchor } from './navigation';
-import { previewEpoch, sampleCelestial } from './astronomy';
+import { previewEpochAtElevation, sampleCelestial } from './astronomy';
 import { createCelestialSky } from './celestial-sky';
 
 export type ParkTimeMode = 'live' | 'sunrise' | 'day' | 'sunset' | 'night';
+
+/** Golden-hour previews deliberately sit above the horizon, as the brief asks. */
+export const PREVIEW_SUN_ELEVATIONS = { sunrise: 5, sunset: 8 } as const;
 
 const DAY_MS = 86_400_000;
 const KOREA_OFFSET_MS = 9 * 3_600_000;
@@ -30,7 +33,8 @@ export function createParkClock(now: () => number = Date.now) {
                 next === 'live'
                     ? 0
                     : next === 'sunrise' || next === 'sunset'
-                      ? previewEpoch(current, next) - current
+                      ? previewEpochAtElevation(current, next, PREVIEW_SUN_ELEVATIONS[next]) -
+                        current
                       : (next === 'day' ? 14 : 21) * 3_600_000 - getSeoulSeconds(current) * 1000;
         },
         read() {
@@ -140,6 +144,7 @@ export function createParkEnvironment(
     let nightTexture: THREE.Texture | null = null;
     let disposed = false;
     const glowMaterials: { material: SurfaceMaterial; strength: number }[] = [];
+    const ledMaterials = new Map<THREE.Material, number>();
     const replacedMaterials = new Set<THREE.Material>();
     const extraLights: { light: THREE.PointLight | THREE.SpotLight; strength: number }[] = [];
     const roadAnchors: NightLightAnchor[] = [];
@@ -153,6 +158,20 @@ export function createParkEnvironment(
         model.traverse((object) => {
             if (/^Driveable_Car(?:[._]\d+)?$/i.test(object.name)) car = object;
             if (!(object instanceof THREE.Mesh)) return;
+            if (object.userData.led_panel === true) {
+                // LED walls, ribbon boards and banners keep the artwork's own
+                // emission; the scene only scales it with the time of day.
+                object.castShadow = false;
+                object.receiveShadow = false;
+                const panels = Array.isArray(object.material) ? object.material : [object.material];
+                for (const panel of panels) {
+                    const surface = panel as SurfaceMaterial;
+                    surface.fog = false;
+                    if (!ledMaterials.has(panel))
+                        ledMaterials.set(panel, surface.emissiveIntensity ?? 1);
+                }
+                return;
+            }
             const names = surfaceNames(object);
             const sky = isSkyDome(object);
             if (sky) {
@@ -313,6 +332,10 @@ export function createParkEnvironment(
         }
         for (const { material, strength } of glowMaterials) {
             material.emissiveIntensity = sample.night * strength;
+        }
+        for (const [material, base] of ledMaterials) {
+            const surface = material as SurfaceMaterial;
+            surface.emissiveIntensity = base * (0.55 + 0.65 * sample.night);
         }
         for (const { light, strength } of extraLights) light.intensity = sample.night * strength;
         hemisphere.intensity = sample.hemisphereIntensity;

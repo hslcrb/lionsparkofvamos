@@ -1,0 +1,43 @@
+{
+  "version": "district-v5",
+  "blend": "lionspark-v5.blend",
+  "blendBytes": 22335122,
+  "blendSha256": "3ee497307ea367436c1afa9fa3dbc9e4afe14f29be1605ac10719939d7c6cce3",
+  "glbBytes": 11999780,
+  "glbSha256": "5b74ec85917ef60014003d69dae1b47fdc175ca17c2b9f4ea42cdb49ba74f5ff",
+  "collisionBytes": 801925,
+  "colliderCount": 9432,
+  "nightLightCount": 22,
+  "seatCount": 36423,
+  "objects": 603,
+  "brandMedia": [
+    "Night_Sign_LED_Facade_Emblem",
+    "Night_Sign_LED_Facade_Emblem.001",
+    "Night_Sign_LED_Fence_Banner",
+    "Night_Sign_LED_Fence_Banner.001",
+    "Night_Sign_LED_Fence_Banner.002",
+    "Night_Sign_LED_Fence_Banner.003",
+    "Night_Sign_LED_Fence_Banner.004",
+    "Night_Sign_LED_Fence_Banner.005",
+    "Night_Sign_LED_Gate_Banner",
+    "Night_Sign_LED_Ribbon",
+    "Night_Sign_LED_Ribbon.001",
+    "Night_Sign_LED_Ribbon.002",
+    "Night_Sign_LED_Ribbon.003",
+    "Night_Sign_LED_Ribbon_Front",
+    "Night_Sign_LED_Ribbon_Front.001",
+    "Night_Sign_LED_Ribbon_Front.002",
+    "Night_Sign_LED_Ribbon_Front.003",
+    "Night_Sign_LED_Scoreboard_Victory",
+    "Night_Sign_LED_Store_Banner"
+  ],
+  "concourseLevels": 2,
+  "skypresets": [
+    "day",
+    "night",
+    "sunrise",
+    "sunset"
+  ],
+  "blender": "4.2.1 LTS",
+  "clock": "Asia/Seoul real time"
+}

@@ -185,14 +185,16 @@ test('sunrise and sunset previews track this Korean date and keep advancing', ()
     const clock = createParkClock(() => now);
     clock.setMode('sunrise');
     const sunrise = clock.read();
-    assert.ok(sunrise.timeLabel >= '06:50:00' && sunrise.timeLabel < '07:15:00');
-    assert.ok(Math.abs(sampleParkLighting(sunrise.epochMs).sunDirection.y) < 0.015);
+    // The dawn preview stages the sun at 5° over Daegu, not on the horizon.
+    assert.ok(sunrise.timeLabel >= '07:15:00' && sunrise.timeLabel < '07:25:00');
+    assert.ok(Math.abs(sampleParkLighting(sunrise.epochMs).sunDirection.y - 0.0872) < 0.004);
     now += 1500;
     assert.equal(clock.read().epochMs, sunrise.epochMs + 1500);
     clock.setMode('sunset');
     const sunset = clock.read();
-    assert.ok(sunset.timeLabel >= '17:10:00' && sunset.timeLabel < '17:40:00');
-    assert.ok(Math.abs(sampleParkLighting(sunset.epochMs).sunDirection.y) < 0.015);
+    // Dusk sits at the 8° golden-hour elevation, about 45 minutes before sunset.
+    assert.ok(sunset.timeLabel >= '16:35:00' && sunset.timeLabel < '16:50:00');
+    assert.ok(Math.abs(sampleParkLighting(sunset.epochMs).sunDirection.y - 0.1392) < 0.004);
     clock.setMode('live');
     assert.equal(clock.read().epochMs, now);
 });
@@ -283,6 +285,37 @@ test('four road lights follow nearby fixture anchors without increasing the GPU 
     assert.equal(scene.children.filter((object) => object instanceof THREE.PointLight).length, 4);
     environment.dispose();
     assert.ok(lights.every((light) => !light.parent));
+});
+
+test('LED walls keep their artwork emission and brighten with the night', () => {
+    const scene = new THREE.Scene();
+    const renderer = { shadowMap: { needsUpdate: false } } as THREE.WebGLRenderer;
+    const environment = createParkEnvironment(scene, renderer, false);
+    const material = new THREE.MeshStandardMaterial({
+        color: 0x0b1f45,
+        emissive: 0xffffff,
+        emissiveIntensity: 3.4,
+    });
+    const panel = new THREE.Mesh(new THREE.BufferGeometry(), material);
+    panel.name = 'Night_Sign_LED_Scoreboard_Victory';
+    panel.userData.led_panel = true;
+    panel.castShadow = true;
+    panel.receiveShadow = true;
+    scene.add(panel);
+    environment.prepareModel(scene);
+    assert.equal(panel.material, material);
+    assert.equal(panel.castShadow, false);
+    assert.equal(panel.receiveShadow, false);
+    environment.update(Date.parse('2026-11-03T14:00:00+09:00'), true);
+    const day = material.emissiveIntensity;
+    environment.update(Date.parse('2026-11-03T21:00:00+09:00'), true);
+    const night = material.emissiveIntensity;
+    assert.ok(day > 1.5 && day < 2.4);
+    assert.ok(night > day * 1.5);
+    assert.ok(Math.abs(night - 3.4 * 1.2) < 0.05);
+    environment.dispose();
+    material.dispose();
+    panel.geometry.dispose();
 });
 
 test('dense diffuse scenery keeps its maps and colors while the driven car retains glossy material', () => {

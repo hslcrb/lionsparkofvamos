@@ -13,25 +13,59 @@ Blender 4.x에서 `.blend`를 열어 직접 고치거나, 파이썬 스크립트
 | Blender **4.2 LTS 이상** (4.x) | 3.x에서는 glTF Draco 내보내기 옵션 이름이 다릅니다 |
 | 파이썬 | Blender에 내장된 파이썬을 그대로 사용합니다 (별도 설치 불필요) |
 | GPU | 필요 없음. 미리보기 렌더는 CPU(Cycles)로도 돌아갑니다 |
-| 저장 공간 | `.blend` 약 18 MB, GLB 약 8.7 MB |
+| 저장 공간 | `.blend` 약 22 MB, GLB 약 12.0 MB |
 
 저장소의 관련 파일:
 
 ```
 assets/blender/
-  lionspark_v4_build.py     ← v4 전체 파이프라인(독립 실행)
-  lionspark-v4.blend        ← v4 편집용 씬 (텍스처 패킹됨)
-  lionspark_v3_build.py     ← 이전 버전(v2 블렌드를 열어 이어 작업)
-  lionspark-v3.blend        ← v3 편집용 씬
+  lionspark_v5_build.py     ← v5 전체 파이프라인(독립 실행, 현재 모델)
+  lionspark-v5.blend        ← v5 편집용 씬 (텍스처 패킹됨)
+  lionspark_v4_build.py     ← v4 파이프라인(직전 단계, 참고용)
+  lionspark-v4.blend        ← v4 편집용 씬
   fonts/                    ← 한글·디스플레이 폰트 (SIL OFL 1.1)
-  textures/                 ← Poly Haven CC0 콘크리트 + 로고 표면
-  references/               ← 참고 사진과 v4 미리보기 렌더
-  v4-manifest.json          ← 크기·해시·충돌체 수 기록
+  textures/                 ← Poly Haven CC0 콘크리트, 로고 표면, brand-*.jpg LED 그래픽
+  references/               ← 참고 사진과 v5 미리보기 렌더(하늘 네 가지)
+  v5-manifest.json          ← 크기·해시·충돌체 수·LED 패널 목록
+assets/graphics/            ← 제공받은 삼성 라이온즈 승리 그래픽 원본
 public/models/
   lionspark.glb             ← 웹이 실제로 불러오는 모델
   lionspark-collision.json  ← 충돌체·출발점·야간 조명
   lionspark-scene.json      ← 씬 설명(버전·구성)
 ```
+
+---
+
+## v5에서 달라진 점
+
+v5는 v4 장면을 그대로 이어받은 **확장**입니다. 좌표계·이름 규칙·충돌 형식은 바뀌지 않았습니다.
+
+| 추가된 것 | 만든 곳 | 이름 규칙 |
+| --- | --- | --- |
+| 메인 LED 월(32 × 18 m), 1·3루 띠전광판, 외야 펜스·팀스토어 배너, 파사드 엠블럼 | `build_identity()`, `build_victory_dressing()` | `Night_Sign_LED_*` + `userData.led_panel` |
+| 1·2층 콘코스, 매장, 구역 안내판, 보미토리 사인, VIP 스위트, 프레스 박스 | `build_interior()` | `WalkSurface_Concourse*`, `Booth_*`, `Sign_Zone_*` |
+| 덕아웃 장비(배트 걸이·헬멧함·쿨러·계단 난간), 외야 불펜 | `build_dugouts_and_bullpens()` | `Dugout_*`, `Bullpen_*` |
+| 야구전설로 1 도로명판, 달구벌대로 표지, 대형 안내 게이트, 역 출구 표기 | `build_street_signs()` | `Sign_Road_*`, `Guide_Sign_*` |
+| 연호지 수면, 수성알파시티 타워, 연호지구 저층 블록, 대구스타디움·미술관 원경, 동측 곡선 도로 | `build_geography()` | `Water_*`, `Distant_Urban_*` |
+| 천체 셰이더용 스카이돔(웹에서 대기 산란으로 대체) | `build_sky_dome()` | `SkyDome_*` |
+
+### 미리보기 렌더
+
+`references/`에 하늘 네 가지와 내부 장면을 남깁니다.
+
+| 파일 | 카메라 | 하늘 |
+| --- | --- | --- |
+| `aerial-sunrise.png` | 항공 | 태양 고도 5°, 동쪽 |
+| `aerial-day.png` | 항공 | 한낮, 태양 56° |
+| `aerial-sunset.png` | 항공 | 태양 고도 8°, 서쪽 |
+| `aerial-night.png` | 항공 | 조명탑·LED 점등 |
+| `plaza-sunset.png` | 광장 | 노을 |
+| `interior-concourse.png` / `interior-concourse-lower.png` | 2층·1층 콘코스 | 실내 조명 |
+| `scoreboard-close.png` | 전광판 정면 | 노을 |
+| `dugout-close.png` | 홈 덕아웃 | 낮 |
+
+LED 아트워크는 저장소의 `assets/graphics/` 원본에서 `python3 scripts/prepare-v5-graphics.py`로
+합성합니다. 원본을 바꾸면 이 스크립트를 다시 돌리고 v5 빌드를 재실행하세요.
 
 ---
 
@@ -41,23 +75,27 @@ public/models/
 
 ```sh
 # 전체 빌드 + 미리보기 렌더 + GLB/충돌체/블렌드 저장
-blender --background --python assets/blender/lionspark_v4_build.py
+blender --background --python assets/blender/lionspark_v5_build.py
 
 # 렌더 없이 빠르게 (CI·서버에서 권장)
-LSV4_SKIP_RENDER=1 blender --background --python assets/blender/lionspark_v4_build.py
+LSV5_RENDER=none blender --background --python assets/blender/lionspark_v5_build.py
 
-# 미리보기 한 장만 다시 렌더 (aerial | plaza | night)
-LSV4_RENDER=plaza LSV4_EXPORT=0 blender --background --python assets/blender/lionspark_v4_build.py
+# 미리보기 한 장만 다시 렌더 (sunrise | day | sunset | night)
+LSV5_RENDER=sunset LSV5_EXPORT=0 blender --background --python assets/blender/lionspark_v5_build.py
+LSV5_RENDER=all LSV5_PARTS=interior-concourse,scoreboard-close LSV5_EXPORT=0 \
+  blender --background --python assets/blender/lionspark_v5_build.py
 ```
 
 | 환경 변수 | 기본값 | 효과 |
 | --- | --- | --- |
-| `LSV4_SKIP_RENDER` | `0` | `1`이면 미리보기 렌더를 모두 건너뜁니다 |
-| `LSV4_RENDER` | `all` | `all` · `aerial` · `plaza` · `night` 중 선택 |
-| `LSV4_EXPORT` | `1` | `0`이면 렌더만 하고 GLB·블렌드 저장을 건너뜁니다 |
-| `LSV4_DENOISE` | `0` | `1`이면 Cycles 디노이즈 사용(메모리 더 필요) |
+| `LSV5_SKIP_RENDER` | `0` | `1`이면 미리보기 렌더를 모두 건너뜁니다 |
+| `LSV5_RENDER` | `all` | `all` · `none` · `sunrise` · `day` · `sunset` · `night` 중 선택 |
+| `LSV5_PARTS` | (없음) | 쉼표로 고른 미리보기만 렌더(`aerial-sunset,interior-concourse` 등) |
+| `LSV5_EXPORT` | `1` | `0`이면 렌더만 하고 GLB·블렌드 저장을 건너뜁니다 |
+| `LSV5_RES_SCALE` / `LSV5_SAMPLE_SCALE` | `1` | 미리보기 해상도·샘플 배율(빠른 확인용) |
+| `LSV5_DENOISE` | `1` | `0`이면 Cycles 디노이즈를 끕니다(조금 빠름) |
 
-GUI에서 실행하려면 Blender의 **Scripting** 워크스페이스에서 `lionspark_v4_build.py`를 열고
+GUI에서 실행하려면 Blender의 **Scripting** 워크스페이스에서 `lionspark_v5_build.py`를 열고
 **Run Script**를 누릅니다. 스크립트는 씬을 새로 만들기 때문에, 먼저 저장하지 않은 작업이
 있다면 백업하세요.
 
@@ -120,7 +158,7 @@ three.js 런타임은 오브젝트·재질 이름으로 지면·조명·차량�
 
 ## 5. 씬 구성
 
-`lionspark-v4.blend`에는 컬렉션 하나(`Lionspark_V4_World`)에 모든 메시가 들어 있습니다.
+`lionspark-v5.blend`에는 컬렉션 하나(`Lionspark_V5_World`)에 모든 메시가 들어 있습니다.
 
 | 그룹 | 내용 |
 | --- | --- |
@@ -142,7 +180,7 @@ three.js 런타임은 오브젝트·재질 이름으로 지면·조명·차량�
 
 ### 6-1. 블렌드에서 직접 고치기
 
-1. `assets/blender/lionspark-v4.blend`를 엽니다(텍스처는 패킹되어 있습니다).
+1. `assets/blender/lionspark-v5.blend`를 엽니다(텍스처는 패킹되어 있습니다).
 2. 오브젝트를 옮기거나 재질을 바꿉니다. **이름은 그대로 두세요.**
 3. `File → Export → glTF 2.0`에서 아래 설정으로 내보냅니다.
    - Format: **glTF Binary (.glb)**
@@ -172,7 +210,7 @@ three.js 런타임은 오브젝트·재질 이름으로 지면·조명·차량�
 ### 6-3. 충돌체까지 다시 만들기
 
 ```sh
-LSV4_SKIP_RENDER=1 blender --background --python assets/blender/lionspark_v4_build.py
+LSV5_SKIP_RENDER=1 blender --background --python assets/blender/lionspark_v5_build.py
 ```
 
 스크립트가 메시의 **연결 성분마다** OBB(회전된 직사각형)를 계산해
@@ -201,7 +239,7 @@ LSV4_SKIP_RENDER=1 blender --background --python assets/blender/lionspark_v4_bui
     { "kind": "flood", "position": [x, y, z], "target": [x, y, z] }
   ],
   "units": "meters",
-  "version": "district-v4"
+  "version": "district-v5"
 }
 ```
 
@@ -245,14 +283,15 @@ LSV4_SKIP_RENDER=1 blender --background --python assets/blender/lionspark_v4_bui
 
 ## 10. 성능
 
-| 항목 | v4 값 |
+| 항목 | v5 값 |
 | --- | --- |
-| 삼각형 | 약 127만 |
-| 메시 오브젝트 | 302 |
-| 재질 | 59 |
-| GLB | 약 8.7 MB (Draco level 6) |
-| 충돌체 | 10,429개 |
+| 삼각형 | 약 140만 |
+| 메시 오브젝트 | 601 |
+| 재질 | 85 |
+| GLB | 약 12.0 MB (Draco level 6) |
+| 충돌체 | 9,376개 |
 | 좌석 | 36,423석 |
+| LED 패널 | 19면(메인 월·띠전광판·펜스·엠블럼) |
 
 좌석은 팬/백 두 개의 상자로 단순화해 하나의 메시로 묶었습니다(드로콜 1회). 관중석
 충돌체는 의도적으로 제외했습니다. 더 가볍게 만들려면 `build_bowl()`의 `rows`와 좌석
@@ -267,7 +306,7 @@ LSV4_SKIP_RENDER=1 blender --background --python assets/blender/lionspark_v4_bui
 | `ModuleNotFoundError: numpy` | Blender 내장 파이썬에는 numpy가 들어 있습니다. 시스템 파이썬으로 실행하지 마세요 |
 | 한글이 □로 보임 | `assets/blender/fonts/NotoSansKR.ttf`가 있는지 확인 |
 | GLB가 너무 큼 | Draco 압축 옵션 확인, 좌석·수목 수 줄이기, 텍스처 해상도 낮추기 |
-| 렌더가 메모리 부족 | `LSV4_RENDER=aerial`처럼 한 장씩 렌더, 해상도 낮추기, `LSV4_DENOISE=0` |
+| 렌더가 메모리 부족 | `LSV5_PARTS=aerial-sunset`처럼 한 장씩 렌더, `LSV5_RES_SCALE=0.7`로 낮추기, `LSV5_DENOISE=0` |
 | 웹에서 지면을 못 밟음 | `WalkSurface` 접두사가 유지됐는지 확인 |
 | 차량이 안 움직임 | `Driveable_Car` 이름과 계층(자식 메시) 확인 |
 | 충돌체가 벽을 뚫음 | 스크립트로 충돌체를 다시 생성(6-3). 손으로 만든 메시는 OBB 근사입니다 |

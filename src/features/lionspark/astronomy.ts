@@ -218,9 +218,26 @@ export function sampleCelestial(epochMs: number): CelestialSample {
  * These are deliberate visual moments, not published sunrise/sunset times.
  */
 export function previewEpoch(epochMs: number, mode: 'sunrise' | 'sunset'): number {
+    return previewEpochAtElevation(epochMs, mode, mode === 'sunrise' ? 0.4 : -0.4);
+}
+
+/**
+ * The moment the Sun reaches a chosen geometric altitude on this Korean date.
+ * Sunrise modes search the rising branch, sunset modes the falling branch, so a
+ * preview can be staged at golden-hour elevations (5° at dawn, 8° at dusk)
+ * rather than exactly on the horizon.
+ */
+export function previewEpochAtElevation(
+    epochMs: number,
+    mode: 'sunrise' | 'sunset',
+    targetDegrees: number,
+): number {
     if (!Number.isFinite(epochMs)) throw new RangeError('A finite epoch is required.');
+    if (!Number.isFinite(targetDegrees) || Math.abs(targetDegrees) > 80)
+        throw new RangeError('A preview altitude within ±80° is required.');
     const start = Math.floor((epochMs + KST_OFFSET_MS) / DAY_MS) * DAY_MS - KST_OFFSET_MS;
-    const target = (mode === 'sunrise' ? 0.4 : -0.4) * DEG;
+    const rising = mode === 'sunrise';
+    const target = targetDegrees * DEG;
     const altitude = (epoch: number) => {
         const century = julianCentury(epoch);
         const solar = solarCoordinates(century);
@@ -235,16 +252,16 @@ export function previewEpoch(epochMs: number, mode: 'sunrise' | 'sunset'): numbe
     let previousAltitude = altitude(start);
     for (let nextEpoch = start + step; nextEpoch <= start + DAY_MS; nextEpoch += step) {
         const nextAltitude = altitude(nextEpoch);
-        const crossing =
-            mode === 'sunrise'
-                ? previousAltitude <= 0 && nextAltitude >= 0
-                : previousAltitude >= 0 && nextAltitude <= 0;
+        const crossing = rising
+            ? previousAltitude <= 0 && nextAltitude >= 0
+            : previousAltitude >= 0 && nextAltitude <= 0;
         if (crossing) {
             let low = previousEpoch;
             let high = nextEpoch;
             for (let iteration = 0; iteration < 25; iteration += 1) {
                 const middle = (low + high) / 2;
-                if (altitude(middle) < 0 === (mode === 'sunrise')) low = middle;
+                const value = altitude(middle);
+                if (rising ? value < 0 : value > 0) low = middle;
                 else high = middle;
             }
             return Math.round((low + high) / 2);

@@ -1,0 +1,19 @@
+{
+  "sources": {
+    "victory-step": "assets/graphics/a7984c9e-6a09-4c5c-9cf3-591d86dea7e5.png",
+    "ks2026-08": "assets/graphics/35166631-d2bc-44bc-9b1f-bcd39f81ef1f.png",
+    "ks2026-05": "assets/graphics/8342ed11-9041-4454-a90b-ba47cebe00a3.png",
+    "ks2026-03": "assets/graphics/df92ef8b-b82f-4dad-adf2-e6a5d71acb92.png",
+    "qaed-02": "assets/graphics/b86c58c3-27b9-4840-a05e-16ed94871526.png",
+    "emblem-sl": "assets/graphics/74833d67-5d1a-4289-8dab-5d17b07583dc.png"
+  },
+  "outputs": [
+    "brand-banner-qaed.jpg",
+    "brand-emblem-sl.jpg",
+    "brand-ribbon-ks.jpg",
+    "brand-ribbon-samsung.jpg",
+    "brand-scoreboard-victory-night.jpg",
+    "brand-scoreboard-victory.jpg"
+  ],
+  "note": "Owner-supplied Samsung Lions victory graphics, composited for LED mapping."
+}

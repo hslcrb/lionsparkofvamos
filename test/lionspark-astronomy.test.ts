@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
     previewEpoch,
+    previewEpochAtElevation,
     sampleCelestial,
     type CelestialDirection,
 } from '../src/features/lionspark/astronomy';
@@ -29,6 +30,20 @@ test('November previews use the same Korean date and the actual eastern and west
     assert.ok(dusk.sunDirection.x < -0.6);
     assert.ok(sampleCelestial(sunrise + 60_000).sunAltitudeRadians > dawn.sunAltitudeRadians);
     assert.ok(sampleCelestial(sunset + 60_000).sunAltitudeRadians < dusk.sunAltitudeRadians);
+});
+
+test('golden-hour previews can be staged at a chosen solar altitude', () => {
+    const epoch = Date.parse('2026-11-03T23:55:00+09:00');
+    const dawn = previewEpochAtElevation(epoch, 'sunrise', 5);
+    const dusk = previewEpochAtElevation(epoch, 'sunset', 8);
+    assert.ok(Math.abs(sampleCelestial(dawn).sunAltitudeRadians - radians(5)) < 1e-5);
+    assert.ok(Math.abs(sampleCelestial(dusk).sunAltitudeRadians - radians(8)) < 1e-5);
+    // A rising sun reaches 5° after the horizon crossing, a setting sun reaches 8° before it.
+    assert.ok(dawn > previewEpoch(epoch, 'sunrise'));
+    assert.ok(dusk < previewEpoch(epoch, 'sunset'));
+    assert.ok(sampleCelestial(dusk).sunDirection.x < -0.6);
+    assert.throws(() => previewEpochAtElevation(epoch, 'sunrise', 120), RangeError);
+    assert.throws(() => previewEpochAtElevation(Number.NaN, 'sunset', 8), RangeError);
 });
 
 test('Daegu summer daylight is longer and the noon sun is higher than in winter', () => {

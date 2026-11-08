@@ -278,10 +278,12 @@ export default function LionsparkWorld() {
                                 {timeMode === 'live'
                                     ? 'KST · UTC+9'
                                     : timeMode === 'sunrise'
-                                      ? '해돋이 미리보기'
+                                      ? '해돋이 5° 미리보기'
                                       : timeMode === 'sunset'
-                                        ? '노을 미리보기'
-                                        : '시간 미리보기'}
+                                        ? '노을 8° 미리보기'
+                                        : timeMode === 'day'
+                                          ? '한낮 미리보기'
+                                          : '조명 켜진 밤'}
                             </span>
                         </div>
                         <div className={styles['time-options']} role="group" aria-label="장면 시간">
@@ -290,35 +292,35 @@ export default function LionsparkWorld() {
                                 aria-pressed={timeMode === 'live'}
                                 onClick={() => chooseTime('live')}
                             >
-                                실시간
-                            </button>
-                            <button
-                                type="button"
-                                aria-pressed={timeMode === 'day'}
-                                onClick={() => chooseTime('day')}
-                            >
-                                낮
-                            </button>
-                            <button
-                                type="button"
-                                aria-pressed={timeMode === 'night'}
-                                onClick={() => chooseTime('night')}
-                            >
-                                밤
+                                <span aria-hidden="true">🕒</span> 실시간
                             </button>
                             <button
                                 type="button"
                                 aria-pressed={timeMode === 'sunrise'}
                                 onClick={() => chooseTime('sunrise')}
                             >
-                                해돋이
+                                <span aria-hidden="true">🌅</span> 일출
+                            </button>
+                            <button
+                                type="button"
+                                aria-pressed={timeMode === 'day'}
+                                onClick={() => chooseTime('day')}
+                            >
+                                <span aria-hidden="true">☀️</span> 낮
                             </button>
                             <button
                                 type="button"
                                 aria-pressed={timeMode === 'sunset'}
                                 onClick={() => chooseTime('sunset')}
                             >
-                                노을
+                                <span aria-hidden="true">🌇</span> 노을
+                            </button>
+                            <button
+                                type="button"
+                                aria-pressed={timeMode === 'night'}
+                                onClick={() => chooseTime('night')}
+                            >
+                                <span aria-hidden="true">🌙</span> 밤
                             </button>
                         </div>
                         <nav className={styles.views} aria-label="라팍 시점">

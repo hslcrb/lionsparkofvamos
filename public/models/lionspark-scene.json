@@ -1,5 +1,5 @@
 {
-  "version": "district-v4",
+  "version": "district-v5",
   "footprintSides": 8,
   "footprint": [
     [
@@ -36,23 +36,30 @@
     ]
   ],
   "clock": "Asia/Seoul live epoch time",
-  "solidCount": 10429,
+  "solidCount": 9432,
   "vehicle": "Driveable_Car",
   "district": [
     "octagonal stadium with two-tier bowl",
-    "outfield scoreboard 36 x 20.4 m on steel frame",
+    "outfield scoreboard 36 x 20.4 m with a 32 x 18 m LED wall",
+    "two concourse rings with concessions, VIP suites and a press box",
+    "dressed home and away dugouts, outfield bullpens",
     "Dalgubeol-daero 10 lanes with median planting",
     "Daegongwon station exits 4 and 5",
     "gate 2 plaza, ticket box, team store, golden lion",
+    "Ya-gujeonseol-ro 1 address plates and overhead destination gantries",
+    "Yeonho reservoir, Alpha City towers, Daegu Stadium and Art Museum silhouettes",
     "P1 and P2 parking",
     "outfield berm, sand playground, Yeonhosan forest hill"
   ],
   "features": [
+    "owner Samsung Lions victory artwork on LED wall, ribbon boards and banners",
     "procedural PBR materials with packed textures",
     "mowing stripes and infield clay",
     "cantilever roof with trusses and skylights",
+    "four preview skies: sunrise 5 deg, noon, sunset 8 deg, floodlit night",
     "night facade wash, floodlights and road lamps",
+    "walkable concourses, stairs and vomitory wayfinding",
     "walking, driving, oriented per-object collision"
   ],
-  "source": "Procedural v4 build script; interpretative reconstruction of the supplied references"
+  "source": "Procedural v5 build script; interpretative reconstruction of the supplied references"
 }

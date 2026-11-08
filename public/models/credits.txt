@@ -1,6 +1,7 @@
 Stadium and district reconstructed procedurally in Blender 4.2 from the supplied aerial, plan and night facade references; unseen details are interpretive.
-Build pipeline: assets/blender/lionspark_v4_build.py (standalone, no external add-ons).
+Build pipeline: assets/blender/lionspark_v5_build.py (standalone, no external add-ons).
 Original facade sign artwork: supplied 대구 삼성 라이온즈 파크.svg.
+2026 Korean Series victory artwork: supplied by the project owner (assets/graphics/), composited into LED wall, ribbon board and banner textures by scripts/prepare-v5-graphics.py.
 Photographic sky: Kloofendal 38d Partly Cloudy Pure Sky by Greg Zaal and Jarod Guest, Poly Haven, CC0. https://polyhaven.com/a/kloofendal_38d_partly_cloudy_puresky
 Concrete paving: Concrete Pavement 03 by Charlotte Baglioni, Poly Haven, CC0. https://polyhaven.com/a/concrete_pavement_03
 Procedural grass, clay, asphalt, paving and roof textures: generated in Blender with numpy by the build script.
