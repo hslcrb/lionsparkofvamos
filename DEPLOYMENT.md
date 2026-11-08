@@ -14,14 +14,14 @@
 빌드 결과물은 `out/` 하나이고, 실시간 응원은 선택 사항입니다. 아래 여섯 가지 경로 중
 편한 것을 고르면 됩니다.
 
-| 호스트 | 3D 라팍월드 | 실시간 응원 | 1분 배포 |
-| --- | --- | --- | --- |
-| **Docker / docker compose** | ✅ | ✅ 내장 Node 서버 | ✅ |
-| **Node.js 서버(VPS·NAS·Railway·Fly.io)** | ✅ | ✅ 내장 Node 서버 | ✅ |
-| **Cloudflare Workers**(본인 계정) | ✅ | ✅ Durable Object | ✅ |
-| **Vercel** | ✅ | ⚠️ 실시간 없음(로컬 응원만) | ✅ |
-| **Cloudflare Pages / Netlify / S3** | ✅ | ⚠️ 실시간 없음(로컬 응원만) | ✅ |
-| **GitHub Pages** | ✅ | ⚠️ 실시간 없음(로컬 응원만) | ✅ |
+| 호스트                                   | 3D 라팍월드 | 실시간 응원                 | 1분 배포 |
+| ---------------------------------------- | ----------- | --------------------------- | -------- |
+| **Docker / docker compose**              | ✅          | ✅ 내장 Node 서버           | ✅       |
+| **Node.js 서버(VPS·NAS·Railway·Fly.io)** | ✅          | ✅ 내장 Node 서버           | ✅       |
+| **Cloudflare Workers**(본인 계정)        | ✅          | ✅ Durable Object           | ✅       |
+| **Vercel**                               | ✅          | ⚠️ 실시간 없음(로컬 응원만) | ✅       |
+| **Cloudflare Pages / Netlify / S3**      | ✅          | ⚠️ 실시간 없음(로컬 응원만) | ✅       |
+| **GitHub Pages**                         | ✅          | ⚠️ 실시간 없음(로컬 응원만) | ✅       |
 
 > 실시간 응원(`/main`의 응원 수·춤 공유)은 WebSocket 서버가 필요합니다. 정적 호스트에서는
 > 응원 버튼과 춤은 **내 화면에서 그대로 동작**하고, 접속자 수·누적 응원 수만 표시되지 않습니다.
@@ -40,15 +40,15 @@ npm run build   # → out/ (정적 HTML·JS·GLB·텍스처)
 
 빌드 산출물:
 
-| 파일 | 크기 | 설명 |
-| --- | --- | --- |
-| `out/index.html`, `out/main.html`, `out/lionspark.html`, `out/418.html` | 수십 KB | 페이지 |
-| `out/_next/**` | 약 1 MB | JS·CSS |
-| `out/models/lionspark.glb` | 약 14.6 MB | Draco 압축 경기장·일대 (v6, WIN OR WOW 포함) |
-| `out/models/lionspark-collision.json` | 약 0.9 MB | 충돌체 10,403개·출발점·야간 조명 |
-| `out/models/lionspark-cadastre.json` | 약 1 KB | 지적 151,526.00 ㎡·펜스 실측·필드 축 |
-| `out/models/*.jpg`, `*.png` | 약 2.5 MB | 하늘·천체 |
-| `out/draco/**` | 약 0.3 MB | Draco 디코더 |
+| 파일                                                                    | 크기       | 설명                                         |
+| ----------------------------------------------------------------------- | ---------- | -------------------------------------------- |
+| `out/index.html`, `out/main.html`, `out/lionspark.html`, `out/418.html` | 수십 KB    | 페이지                                       |
+| `out/_next/**`                                                          | 약 1 MB    | JS·CSS                                       |
+| `out/models/lionspark.glb`                                              | 약 14.6 MB | Draco 압축 경기장·일대 (v6, WIN OR WOW 포함) |
+| `out/models/lionspark-collision.json`                                   | 약 0.9 MB  | 충돌체 10,403개·출발점·야간 조명             |
+| `out/models/lionspark-cadastre.json`                                    | 약 1 KB    | 지적 151,526.00 ㎡·펜스 실측·필드 축         |
+| `out/models/*.jpg`, `*.png`                                             | 약 2.5 MB  | 하늘·천체                                    |
+| `out/draco/**`                                                          | 약 0.3 MB  | Draco 디코더                                 |
 
 서버가 필요 없는 정적 파일이므로, 아래 어느 호스트든 **`out/` 디렉터리만** 있으면 됩니다.
 
@@ -85,11 +85,11 @@ npm ci && npm run build
 PORT=8080 CHEERS_FILE=/var/lib/lionspark/cheers.json npm run serve
 ```
 
-| 환경 변수 | 기본값 | 설명 |
-| --- | --- | --- |
-| `PORT` | `8080` | HTTP 포트 |
-| `HOST` | `0.0.0.0` | 바인드 주소 |
-| `CHEERS_FILE` | (없음) | 응원 수를 저장할 JSON 경로. 없으면 메모리에만 유지 |
+| 환경 변수     | 기본값    | 설명                                               |
+| ------------- | --------- | -------------------------------------------------- |
+| `PORT`        | `8080`    | HTTP 포트                                          |
+| `HOST`        | `0.0.0.0` | 바인드 주소                                        |
+| `CHEERS_FILE` | (없음)    | 응원 수를 저장할 JSON 경로. 없으면 메모리에만 유지 |
 
 systemd 예시:
 
@@ -136,9 +136,13 @@ location / {
 
 ```jsonc
 {
-  "name": "vamoslionspark",
-  "assets": { "directory": "./out", "html_handling": "auto-trailing-slash", "not_found_handling": "404-page" },
-  "routes": [{ "pattern": "vamoslionspark.rhee.life", "custom_domain": true }]
+    "name": "vamoslionspark",
+    "assets": {
+        "directory": "./out",
+        "html_handling": "auto-trailing-slash",
+        "not_found_handling": "404-page",
+    },
+    "routes": [{ "pattern": "vamoslionspark.rhee.life", "custom_domain": true }],
 }
 ```
 
@@ -184,11 +188,11 @@ npx vercel --prod
 
 ## 5. Cloudflare Pages · Netlify · S3 등 정적 호스트
 
-| 호스트 | 빌드 명령 | 출력 디렉터리 |
-| --- | --- | --- |
-| Cloudflare Pages | `npm run build` | `out` |
-| Netlify | `npm run build` | `out` |
-| Amazon S3 + CloudFront | `npm run build` 후 `out/` 업로드 | — |
+| 호스트                 | 빌드 명령                        | 출력 디렉터리 |
+| ---------------------- | -------------------------------- | ------------- |
+| Cloudflare Pages       | `npm run build`                  | `out`         |
+| Netlify                | `npm run build`                  | `out`         |
+| Amazon S3 + CloudFront | `npm run build` 후 `out/` 업로드 | —             |
 
 정적 호스트에서는 `/lionspark`, `/main` 같은 경로가 `lionspark.html`로 연결되도록
 **clean URL 또는 `*.html` 폴백**을 켜 주세요. Cloudflare Pages는 `404.html` 폴백을 자동으로
@@ -221,33 +225,33 @@ touch out/.nojekyll      # _next/ 폴더가 Jekyll에 걸리지 않게
 ```yaml
 name: pages
 on:
-  push:
-    branches: [main]
+    push:
+        branches: [main]
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+    contents: read
+    pages: write
+    id-token: write
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: NEXT_PUBLIC_BASE_PATH="/${{ github.event.repository.name }}" npm run build
-      - run: touch out/.nojekyll
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: out
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment: github-pages
-    steps:
-      - uses: actions/deploy-pages@v4
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: npm
+            - run: npm ci
+            - run: NEXT_PUBLIC_BASE_PATH="/${{ github.event.repository.name }}" npm run build
+            - run: touch out/.nojekyll
+            - uses: actions/upload-pages-artifact@v3
+              with:
+                  path: out
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        environment: github-pages
+        steps:
+            - uses: actions/deploy-pages@v4
 ```
 
 사용자 사이트(`https://<user>.github.io/`)나 커스텀 도메인이면 `NEXT_PUBLIC_BASE_PATH` 없이
@@ -291,14 +295,14 @@ sudo nginx -t && sudo systemctl reload nginx
 
 ## 9. 문제 해결
 
-| 증상 | 원인 · 해결 |
-| --- | --- |
-| `/lionspark`가 404 | 정적 호스트의 clean URL/폴백 설정이 꺼져 있음 → `lionspark.html` 매핑 추가 |
-| 모델이 안 보임 | `out/models/lionspark.glb`가 업로드됐는지, `NEXT_PUBLIC_BASE_PATH`와 실제 경로가 같은지 확인 |
-| `/api/room` 426 | WebSocket 없는 정적 호스트 → 정상. Node 서버나 Worker를 써야 실시간 동작 |
-| 응원 수가 안 올라감 | 정적 호스트이거나 리버스 프록시가 `Upgrade` 헤더를 막고 있음 |
-| 하위 경로에서 CSS·JS 404 | `NEXT_PUBLIC_BASE_PATH` 없이 빌드함 → 접두사를 붙여 다시 빌드 |
-| Docker 빌드가 느림 | `.dockerignore`가 `node_modules`·`assets/blender`를 제외하는지 확인 |
+| 증상                     | 원인 · 해결                                                                                  |
+| ------------------------ | -------------------------------------------------------------------------------------------- |
+| `/lionspark`가 404       | 정적 호스트의 clean URL/폴백 설정이 꺼져 있음 → `lionspark.html` 매핑 추가                   |
+| 모델이 안 보임           | `out/models/lionspark.glb`가 업로드됐는지, `NEXT_PUBLIC_BASE_PATH`와 실제 경로가 같은지 확인 |
+| `/api/room` 426          | WebSocket 없는 정적 호스트 → 정상. Node 서버나 Worker를 써야 실시간 동작                     |
+| 응원 수가 안 올라감      | 정적 호스트이거나 리버스 프록시가 `Upgrade` 헤더를 막고 있음                                 |
+| 하위 경로에서 CSS·JS 404 | `NEXT_PUBLIC_BASE_PATH` 없이 빌드함 → 접두사를 붙여 다시 빌드                                |
+| Docker 빌드가 느림       | `.dockerignore`가 `node_modules`·`assets/blender`를 제외하는지 확인                          |
 
 ---
 
