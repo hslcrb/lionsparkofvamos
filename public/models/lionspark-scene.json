@@ -1,5 +1,5 @@
 {
-  "version": "reference-v3",
+  "version": "district-v4",
   "footprintSides": 8,
   "footprint": [
     [
@@ -36,18 +36,23 @@
     ]
   ],
   "clock": "Asia/Seoul live epoch time",
-  "solidCount": 75390,
+  "solidCount": 10221,
   "vehicle": "Driveable_Car",
-  "logo": "SVG composited to single 4K image surfaces; roofline white-letter variant",
-  "features": [
-    "open portal facade",
-    "roofline original identity",
-    "night blue architectural light",
-    "stadium floodlights",
-    "crossroads with clean markings",
-    "running",
-    "driving",
-    "individual object collision"
+  "district": [
+    "octagonal stadium with two-tier bowl",
+    "outfield scoreboard 36 x 20.4 m on steel frame",
+    "Dalgubeol-daero 10 lanes with median planting",
+    "Daegongwon station exits 4 and 5",
+    "gate 2 plaza, ticket box, team store, golden lion",
+    "P1 and P2 parking",
+    "outfield berm, sand playground, Yeonhosan forest hill"
   ],
-  "source": "Supplied aerial and night facade references; hidden detail remains interpreted"
+  "features": [
+    "procedural PBR materials with packed textures",
+    "mowing stripes and infield clay",
+    "cantilever roof with trusses and skylights",
+    "night facade wash, floodlights and road lamps",
+    "walking, driving, oriented per-object collision"
+  ],
+  "source": "Procedural v4 build script; interpretative reconstruction of the supplied references"
 }

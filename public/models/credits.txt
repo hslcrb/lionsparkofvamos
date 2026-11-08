@@ -1,7 +1,10 @@
-Stadium reconstructed in Blender from the supplied aerial reference; unseen details are interpretive.
-Original facade sign: supplied 대구 삼성 라이온즈 파크.svg.
+Stadium and district reconstructed procedurally in Blender 4.2 from the supplied aerial, plan and night facade references; unseen details are interpretive.
+Build pipeline: assets/blender/lionspark_v4_build.py (standalone, no external add-ons).
+Original facade sign artwork: supplied 대구 삼성 라이온즈 파크.svg.
 Photographic sky: Kloofendal 38d Partly Cloudy Pure Sky by Greg Zaal and Jarod Guest, Poly Haven, CC0. https://polyhaven.com/a/kloofendal_38d_partly_cloudy_puresky
 Concrete paving: Concrete Pavement 03 by Charlotte Baglioni, Poly Haven, CC0. https://polyhaven.com/a/concrete_pavement_03
+Procedural grass, clay, asphalt, paving and roof textures: generated in Blender with numpy by the build script.
+Fonts: Noto Sans KR (Adobe, SIL Open Font License 1.1), Barlow Condensed (Jeremy Tribby, SIL Open Font License 1.1). See assets/blender/fonts/OFL-*.txt.
 Celestial night atlas: original procedural artwork generated in Blender MCP; statistical stars, not a star catalogue. Source: assets/blender/celestial_sky_texture.py.
 Galactic pole orientation reference: Astropy Galactic frame. https://github.com/astropy/astropy/blob/main/astropy/coordinates/builtin_frames/galactic.py
 Atmospheric scattering: Three.js Sky / Preetham model, MIT. https://threejs.org/docs/pages/Sky.html

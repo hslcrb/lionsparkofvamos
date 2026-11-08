@@ -1,5 +1,6 @@
 'use client';
 
+import { assetPath } from '../asset-path';
 import {
     createContext,
     useCallback,
@@ -34,7 +35,7 @@ export function MusicProvider({ children }: { children: ReactNode }) {
 
     const play = useCallback(() => {
         if (!audio.current) {
-            audio.current = new Audio('/my-lions.mp3');
+            audio.current = new Audio(assetPath('/my-lions.mp3'));
             audio.current.loop = true;
             audio.current.addEventListener('pause', () => setStatus('off'));
         }

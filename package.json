@@ -15,7 +15,8 @@
         "preview": "wrangler dev --local --port 8787",
         "deploy": "npm run build && wrangler deploy",
         "check": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build",
-        "verify:local": "tsx scripts/verify-local.ts"
+        "verify:local": "tsx scripts/verify-local.ts",
+        "serve": "node server/standalone.mjs"
     },
     "repository": {
         "type": "git",

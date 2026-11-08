@@ -1,0 +1,24 @@
+# Lions Park of VAMOS — self-hosting in one command.
+#
+#   docker compose up --build
+#   open http://localhost:8080
+#
+# The named volume keeps the cheer counter across restarts. Remove the volume
+# (docker compose down -v) to start the room from zero.
+services:
+  lionspark:
+    build:
+      context: .
+    image: lionsparkofvamos:local
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      PORT: 8080
+      HOST: 0.0.0.0
+      CHEERS_FILE: /data/cheers.json
+    volumes:
+      - cheers:/data
+    restart: unless-stopped
+
+volumes:
+  cheers:

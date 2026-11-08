@@ -7,3 +7,5 @@ worker/.deploy-*.json
 .next/
 out/
 *.tsbuildinfo
+
+*.blend1

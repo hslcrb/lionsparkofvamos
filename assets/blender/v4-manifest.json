@@ -1,0 +1,15 @@
+{
+  "version": "district-v4",
+  "blend": "lionspark-v4.blend",
+  "blendBytes": 18109773,
+  "blendSha256": "2c3992ab884466e1a9a9612f01f65c8bfec858cebabb5a45f9139fdbb13cebe3",
+  "glbBytes": 8718980,
+  "glbSha256": "629d6402148dceace87788f4b33e48c6eeab3ea51ab408e6e9615c200d2aa7cc",
+  "collisionBytes": 866345,
+  "colliderCount": 10221,
+  "nightLightCount": 22,
+  "seatCount": 36423,
+  "objects": 298,
+  "blender": "4.2.1 LTS",
+  "clock": "Asia/Seoul real time"
+}

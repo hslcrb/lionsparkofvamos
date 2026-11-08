@@ -1,3 +1,4 @@
+import { assetPath } from '../../asset-path';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
@@ -48,9 +49,9 @@ export interface ParkRuntime {
     dispose: () => void;
 }
 
-const MODEL_URL = '/models/lionspark.glb';
-const COLLISION_URL = '/models/lionspark-collision.json';
-const CELESTIAL_SKY_URL = '/models/celestial-night.png';
+const MODEL_URL = assetPath('/models/lionspark.glb');
+const COLLISION_URL = assetPath('/models/lionspark-collision.json');
+const CELESTIAL_SKY_URL = assetPath('/models/celestial-night.png');
 const START = new THREE.Vector3(0, EYE_HEIGHT, 165);
 const OVERVIEW = new THREE.Vector3(255, 240, 340);
 
@@ -205,7 +206,7 @@ export function createParkRuntime(
     let drag: { id: number; x: number; y: number } | null = null;
     const controller = new AbortController();
     const draco = new DRACOLoader();
-    draco.setDecoderPath('/draco/');
+    draco.setDecoderPath(assetPath('/draco/'));
     draco.setWorkerLimit(coarse ? 1 : 2);
     const loader = new GLTFLoader().setDRACOLoader(draco);
 
@@ -580,7 +581,7 @@ export function createParkRuntime(
         solids = new SolidIndex(collisions);
         spawn.fromArray(collisions.spawn);
         overviewPosition.fromArray(collisions.overview);
-        const gltf = await loader.parseAsync(buffer, '/models/');
+        const gltf = await loader.parseAsync(buffer, assetPath('/models/'));
         if (disposed) {
             disposeModel(gltf.scene);
             return;
