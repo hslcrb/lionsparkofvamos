@@ -107,7 +107,7 @@ Lions blue 톤이며, 네온 장식은 쓰지 않습니다. 입구에서 응원�
 - **Cloudflare Worker**가 `ASSETS` 바인딩으로 정적 자산을 서빙하고, `/`, `/main`,
   `/lionspark`, `/418`에는 각각의 HTML을, 나머지 HTML 요청에는 실제 404를 돌려줍니다.
   GET·HEAD 외에는 405입니다.
-- **Durable Object `CheerRoom`**은 방 하나(`cinema`)에 하나입니다. SQLite에 응원 수
+- **응원 상태 저장** — `CheerRoom` Durable Object는 방 하나(`cinema`)에 하나입니다. SQLite에 응원 수
   한 줄만 저장하고, 접속자 수와 응원·춤 이벤트를 메모리 소켓으로 브로드캐스트합니다.
   클라이언트 메시지는 256바이트 이하, 알려진 타입만 통과시킵니다.
 - **부하 특성**: 페이지 요청은 CDN 캐시에서 끝나고, Worker는 HTML 상태 코드와 WebSocket
